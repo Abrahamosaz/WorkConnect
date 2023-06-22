@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'workconnect.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-HOST='0.0.0.0'
+HOST='127.0.0.1'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
