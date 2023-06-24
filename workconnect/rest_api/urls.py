@@ -1,8 +1,9 @@
 from django.urls import path
-from .views import get_post, create_post, RegisterEmployerUser
+from .views import (PostViews, RegisterEmployerUser, RegisterEmployeeUser, UserLogin)
 
 urlpatterns = [
-    path('posts/', get_post),
-    path('create_post/', create_post),
-    path('register/', RegisterEmployerUser)
+    path('post/', PostViews.as_view()),
+    path('register-employer/', RegisterEmployerUser),
+    path('register-employee/', RegisterEmployeeUser),
+    path('login/', UserLogin)
 ]
