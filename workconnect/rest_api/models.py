@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from phonenumber_field.modelfields import PhoneNumberField
 
 
 # Create your models here.
@@ -9,22 +8,22 @@ class Employee_user(models.Model):
     age = models.PositiveIntegerField(blank=False, null=False)
     location = models.CharField(max_length=100)
     skill = models.CharField(max_length=1000)
-    phone_number = PhoneNumberField(blank=False, null=False, unique=True)
-    profile_pic = models.ImageField(upload_to='employee_uploads/')
+    phone_number = models.CharField(max_length=15, blank=False, null=False, unique=True)
+    profile_pic = models.ImageField(upload_to='employee_uploads/', blank=True, null=True)
 
 
     def __str__(self):
         return self.user.first_name
 
 class Employer_user(models.Model):
-    user  = models.OneToOneField(User, on_delete=models.CASCADE)
-    age = models.PositiveIntegerField(blank=False, null=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    date_birth = models.DateField(null=False, blank=False)
     location = models.CharField(max_length=100)
-    phone_number = PhoneNumberField(blank=False, null=False, unique=True)
+    phone_number = models.CharField(max_length=15, blank=False, null=False, unique=True)
     company_name = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
     address = models.TextField(null=True)
-    profile_pic = models.ImageField(upload_to='employer_uploads/')
+    profile_pic = models.ImageField(upload_to='employer_uploads/', blank=True, null=True)
 
     def __str__(self):
         return self.user.first_name
