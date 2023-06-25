@@ -8,5 +8,5 @@ urlpatterns = [
     path('register-employer/', RegisterEmployerUser),
     path('register-employee/', RegisterEmployeeUser),
     path('login/', UserLogin),
-    path('post/comments', CommentViews.as_view())
+    path('post/<int:post_id>/comments', CommentViews.as_view())
 ]

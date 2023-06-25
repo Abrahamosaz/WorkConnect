@@ -39,7 +39,7 @@ class PostViews(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
-            return Response({'message': 'invalid details', 'errors': serializer.errors})
+            return Response({'message': 'invalid credentials', 'errors': serializer.errors})
 
 
 class CommentViews(APIView):
@@ -47,8 +47,7 @@ class CommentViews(APIView):
     authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated]
 
-    def get(self, request):
-        post_id = request.query_params['post_id']
+    def get(self, request, post_id):
         try:
             post = Post.objects.get(id=post_id)
         except Post.DoesNotExist:
@@ -57,8 +56,28 @@ class CommentViews(APIView):
         serializer = CommentSerializer(comment, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    def post(self, request):
+    def post(self, request, post_id):
+        data = request.data
+        try:
+            post = Post.objects.get(id=post_id)
+        except Post.DoesNotExist:
+            Response({'message': 'post object does not exist'}, status=status.HTTP_404_NOT_FOUND)
+        serializer = CommentSerializer(data=data)
+        if serializer.is_valid():
+            serializer.validated_data['post'] = post
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response({'message': 'invalid credentials', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+class JobViews(APIView):
+
+    authentication_classes =[authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
         return Response()
+
 
 
 @api_view(['POST'])

@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Post, Employee_user, Employer_user, User, Comment
+from .models import (Post, Employee_user, Employer_user,
+                     User, Comment, Job)
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -13,8 +14,8 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ['title', 'content', 'author']
-        read_only_fields = ['author']
+        fields = '__all__'
+        read_only_fields = ['author', 'created_at', 'updated_at']
 
 
     def create(self, validated_data):
@@ -57,5 +58,12 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ['post', 'content']
-        read_only_fields = ['post']
+        fields = '__all__'
+        read_only_fields = ['post', 'created_at', 'updated_at']
+
+
+class JonSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Job
+        exclude = '__all__'
+        read_only_fields =['employer_user']
