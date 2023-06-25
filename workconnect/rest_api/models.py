@@ -61,11 +61,12 @@ class Job(models.Model):
         return self.position
 
 class Application_form(models.Model):
+    Job = models.ForeignKey(Job, null=True, on_delete=models.CASCADE)
     position = models.CharField(max_length=100)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     skills = models.TextField()
-    resume = models.FileField()
+    resume = models.FileField(blank=True, null=True)
     cover_letter = models.TextField()
 
     def __str__(self):

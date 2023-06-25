@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import (Post, Employee_user, Employer_user,
-                     User, Comment, Job)
+                     User, Comment, Job, Application_form)
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -62,8 +62,15 @@ class CommentSerializer(serializers.ModelSerializer):
         read_only_fields = ['post', 'created_at', 'updated_at']
 
 
-class JonSerializer(serializers.ModelSerializer):
+class JobSerializer(serializers.ModelSerializer):
     class Meta:
         model = Job
-        exclude = '__all__'
+        fields = '__all__'
         read_only_fields =['employer_user']
+
+
+class ApplicationFormSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Application_form
+        fields = '__all__'
+        read_only_fields = ['job']

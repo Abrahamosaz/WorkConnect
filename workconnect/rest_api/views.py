@@ -1,10 +1,18 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.response import Response
-from .serializers import (PostSerializer, EmployeeSerializer, EmployerSerializer, UserSerializer, CommentSerializer)
+from .serializers import (
+    PostSerializer, EmployeeSerializer,
+    EmployerSerializer, UserSerializer,
+    CommentSerializer, ApplicationFormSerializer,
+    JobSerializer
+    )
 from rest_framework.authtoken.models import Token
 from rest_framework import status
 from rest_framework.views import APIView 
-from .models import Post, Employee_user, Employer_user, User, Comment
+from .models import (
+    Post, Employee_user, Employer_user,
+    User, Comment, Application_form, Job
+    )
 from datetime import date
 from phonenumber_field.modelfields import PhoneNumberField
 from rest_framework import authentication, permissions
@@ -24,8 +32,8 @@ class PostViews(APIView):
                     post = Post.objects.filter(author__exact=author)
                 else:
                     post = Post.objects.filter(title__icontains=request.query_params['title'])
-            except User.DoesNotExist:
-                return Response({'message': 'user id does not exist'}, status=status.HTTP_404_NOT_FOUND)
+            except Exception as err:
+                return Response({'message': 'failed', 'error': err.args}, status=status.HTTP_404_NOT_FOUND)
         else:
             post = Post.objects.all()
         serializer = PostSerializer(post, many=True)
@@ -70,14 +78,80 @@ class CommentViews(APIView):
         else:
             return Response({'message': 'invalid credentials', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
+
 class JobViews(APIView):
 
     authentication_classes =[authentication.TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
-        return Response()
+        if request.query_params:
+            try:
+                if "employer_id" in request.query_params:
+                    employer = Employer_user.objects.get(id=request.query_params['employer_id'])
+                    job = Job.objects.filter(employer_user__exact=employer)
+                else:
+                    job = Job.objects.filter(position__icontains=request.query_params['position'])
+            except Exception as err:
+                return Response({'message': 'failed', 'error': err.args}, status=status.HTTP_404_NOT_FOUND)
+        else:
+            job = Job.objects.all()
+        serializer = JobSerializer(job, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
+    def post(self, request):
+        data = request.data
+        serializer = JobSerializer(data=data)
+        if serializer.is_valid():
+            try:
+                employer_id = request.data['employer_id']
+            except KeyError:
+                return Response({'message': 'provide the employer_id key'}, status=status.HTTP_400_BAD_REQUEST)
+            employer = Employer_user.objects.get(id=employer_id)
+            serializer.validated_data['employer_user'] = employer
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response({'message': 'invalid credentials', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ApplicationFromView(APIView):
+    
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+
+    def post(self, request, job_id):
+        data = request.data
+        serializer = ApplicationFormSerializer(data=data)
+        if serializer.is_valid():
+            job = Job.objects.get(id=job_id)
+            serializer.validated_data['Job'] = job
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response({'message': 'invalid credentials', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, job_id):
+        try:
+            job = Job.objects.get(id=job_id)
+        except Job.DoesNotExist:
+            return Response({'message': 'post id does not exist'}, status=status.HTTP_400_BAD_REQUEST)
+        application_objs  = Application_form.objects.filter(Job=job)
+        for obj in application_objs:
+            obj.delete()
+        job.delete()
+        return Response({'message': 'success'}, status=status.HTTP_308_PERMANENT_REDIRECT)
+
+
+    def get(self, request, job_id):
+        try:
+            job = Job.objects.get(id=job_id)
+        except Job.DoesNotExist:
+            return Response({'message': 'job id does not exist'}, status=status.HTTP_400_BAD_REQUEST)
+        application_form = Application_form.objects.filter(Job=job)
+        serializer = ApplicationFormSerializer(application_form, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])
@@ -94,8 +168,6 @@ def RegisterEmployerUser(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     else:
         return Response({'message': 'invalid data', 'errors': serializer.errors})
-
-
 
 
 @api_view(['POST'])
