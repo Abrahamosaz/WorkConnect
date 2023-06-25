@@ -67,6 +67,7 @@ class JobSerializer(serializers.ModelSerializer):
         model = Job
         fields = '__all__'
         read_only_fields =['employer_user']
+        depth = 1
 
 
 class ApplicationFormSerializer(serializers.ModelSerializer):
@@ -74,3 +75,4 @@ class ApplicationFormSerializer(serializers.ModelSerializer):
         model = Application_form
         fields = '__all__'
         read_only_fields = ['job']
+        depth = 1
