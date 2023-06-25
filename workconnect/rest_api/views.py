@@ -1,10 +1,10 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import (PostSerializer, EmployeeSerializer, EmployerSerializer, UserSerializer)
+from .serializers import (PostSerializer, EmployeeSerializer, EmployerSerializer, UserSerializer, CommentSerializer)
 from rest_framework.authtoken.models import Token
 from rest_framework import status
 from rest_framework.views import APIView 
-from .models import Post, Employee_user, Employer_user, User
+from .models import Post, Employee_user, Employer_user, User, Comment
 from datetime import date
 from phonenumber_field.modelfields import PhoneNumberField
 from rest_framework import authentication, permissions
@@ -17,7 +17,17 @@ class PostViews(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
-        post = Post.objects.all()
+        if request.query_params:
+            try:
+                if "author_id" in request.query_params:
+                    author = User.objects.get(id=request.query_params['author_id'])
+                    post = Post.objects.filter(author__exact=author)
+                else:
+                    post = Post.objects.filter(title__icontains=request.query_params['title'])
+            except User.DoesNotExist:
+                return Response({'message': 'user id does not exist'}, status=status.HTTP_404_NOT_FOUND)
+        else:
+            post = Post.objects.all()
         serializer = PostSerializer(post, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
@@ -32,6 +42,23 @@ class PostViews(APIView):
             return Response({'message': 'invalid details', 'errors': serializer.errors})
 
 
+class CommentViews(APIView):
+
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+        post_id = request.query_params['post_id']
+        try:
+            post = Post.objects.get(id=post_id)
+        except Post.DoesNotExist:
+            return Response({'message': 'post object does not exist'}, status=status.HTTP_404_NOT_FOUND)
+        comment = Comment.objects.filter(post=post)
+        serializer = CommentSerializer(comment, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def post(self, request):
+        return Response()
 
 
 @api_view(['POST'])
@@ -41,6 +68,8 @@ def RegisterEmployerUser(request):
     if serializer.is_valid():
         serializer.validated_data['date_birth'] = date.fromisoformat(data['date_birth'])
         user = User.objects.create(**data['user'])
+        user.set_password(user.password)
+        user.save()
         serializer.validated_data['user'] = user
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)

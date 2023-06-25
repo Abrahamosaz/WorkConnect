@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Post, Employee_user, Employer_user, User
+from .models import Post, Employee_user, Employer_user, User, Comment
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -9,6 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
+    author = UserSerializer(required=False)
 
     class Meta:
         model = Post
@@ -49,3 +50,12 @@ class EmployeeSerializer(serializers.ModelSerializer):
         user = validated_data['user']
         employee_user = Employee_user.objects.create(**validated_data)
         return employee_user
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    post = PostSerializer(required=False)
+
+    class Meta:
+        model = Comment
+        fields = ['post', 'content']
+        read_only_fields = ['post']
