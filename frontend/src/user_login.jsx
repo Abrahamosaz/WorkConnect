@@ -15,7 +15,7 @@ function UserLogin() {
             <h3>Login to your WorkConnect Account</h3>
             <br />
             <form action="" onSubmit={handleSubmit}>
-                <label htmlFor="email">Email
+                <label htmlFor="email">Email: 
                     <input
                     type="email"
                     name="email"
@@ -24,7 +24,7 @@ function UserLogin() {
                     onChange={(e) => setEmail(e.target.value)} />
                 </label>
                 <br />
-                <label htmlFor="pass">Password
+                <label htmlFor="pass">Password: 
                 <input type="password" name="pass" id="pass" />
                 </label>
                 <br />

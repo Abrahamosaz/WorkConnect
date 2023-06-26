@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Routes, Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 function Home() {

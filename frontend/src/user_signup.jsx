@@ -2,14 +2,16 @@ import React from 'react';
 import './App.css';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 
 function UserSignup() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        alert("Welcome {name}. You have successfully created your WorkConnect account")
+        navigate('/signup_success');
     }
 
     return (
@@ -19,7 +21,7 @@ function UserSignup() {
             <small>We only need a few details</small>
             <br />
             <form action="" onSubmit={handleSubmit}>
-                <label htmlFor="name">Full Name
+                <label htmlFor="name">Full Name: 
                     <input
                     type="text"
                     name="full_name"
@@ -28,7 +30,7 @@ function UserSignup() {
                     onChange={(e) => setName(e.target.value)} />
                 </label>
                 <br />
-                <label htmlFor="email">Email
+                <label htmlFor="email">Email: 
                     <input
                     type="email"
                     name="email"
@@ -37,11 +39,11 @@ function UserSignup() {
                     onChange={(e) => setEmail(e.target.value)} />
                 </label>
                 <br />
-                <label htmlFor="pass">Password
+                <label htmlFor="pass">Password: 
                 <input type="password" name="pass" id="pass" />
                 </label>
                 <br />
-                <label htmlFor="pass_confirm">Confirm Password
+                <label htmlFor="pass_confirm">Confirm Password: 
                     <input type="password" name="pass_confirm" id="pass_confirm" />
                 </label>
                 <br />
