@@ -2,11 +2,12 @@ from django.urls import path
 from .views import (PostViews, RegisterEmployerUser,
                     RegisterEmployeeUser, UserLogin,
                     CommentViews, ApplicationFromView,
-                    JobViews
+                    JobViews, create_user
                     )
 
 urlpatterns = [
     path('post/', PostViews.as_view()),
+    path('users/', create_user),
     path('register-employer/', RegisterEmployerUser),
     path('register-employee/', RegisterEmployeeUser),
     path('login/', UserLogin),

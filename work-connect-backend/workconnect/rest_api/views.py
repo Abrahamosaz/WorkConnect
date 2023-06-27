@@ -14,7 +14,6 @@ from .models import (
     User, Comment, Application_form, Job
     )
 from datetime import date
-from phonenumber_field.modelfields import PhoneNumberField
 from rest_framework import authentication, permissions
 from django.contrib.auth import authenticate
 
@@ -201,3 +200,21 @@ def UserLogin(request):
         else:
             return Response({'message': 'Resgister a user'}, status=status.HTTP_401_UNAUTHORIZED)
 
+
+
+@api_view(['POST'])
+def create_user(request):
+    data = request.data
+    confirm_password = data.get('confirm_password', None)
+    serializer = UserSerializer(data = data)
+    if serializer.is_valid():
+        password = serializer.validated_data.get('password', None)
+        user = User.objects.create(**serializer.validated_data) if password == confirm_password\
+            else None
+        if not user:
+            return Response({'message': 'failed', 'error': 'passwords does not match, enter the passwords again'}, status=status.HTTP_400_BAD_REQUEST)
+        user.set_password(user.password)
+        user.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    else:
+        return Response({'message': 'failed', 'error': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)

@@ -1,0 +1,32 @@
+body {
+    font-size: 16px;
+}
+
+
+.home-page {
+    width: auto;
+    margin: 30px 20px;
+    padding: 10px;
+}
+
+.nav {
+    display: flex;
+    position: relative;
+    margin: 20px;
+    padding: 10px;
+}
+
+.nav-bar-right {
+    position: absolute;
+    right: 10px;
+}
+
+.nav-bar-right ul {
+    list-style: None;
+    display: flex;
+    margin-right: 40px;
+}
+
+div.nav-bar-right li {
+    border: 10px white solid;
+}
