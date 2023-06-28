@@ -57,7 +57,7 @@ function UserSignup() {
                     onChange={(e) => setUsername(e.target.value)} />
                 </div>
                 <div>
-                <label htmlFor="email">FirstName:</label>
+                <label htmlFor="firstname">FirstName:</label>
                     <input
                     type="text"
                     name="firstName"

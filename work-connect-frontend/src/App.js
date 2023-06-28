@@ -7,21 +7,28 @@ import SignupSuccess from './pages/signup_success';
 import NoMatch from './pages/nomatch';
 import SignUpEmployee from './pages/sign_up_employee';
 import SignUpEmployer from './pages/sign_up_employer';
-import userType from './pages/user_type';
+import UserType from './pages/user_type';
+import EmployeeSignUpDetails from './pages/employee_signup_details';
+import EmployerSignUpDetails from './pages/employer_signup_details';
+import Navbar from './pages/navbar';
 
 
 function App() {
   return (
     <div>
     <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/sign_up' element={<UserSignup />} />
-      <Route path='/login' element={<UserLogin />} />
-      <Route path='/signup_success' element={<SignupSuccess />} />
-      <Route path='/sign_up_employee' element={<SignUpEmployee />} />
-      <Route path='/sign_up_employer' element={<SignUpEmployer />} />
-      <Route path='/user_type' element={<userType/>} />
+    <Route path='/' element={<Navbar />}>
+      <Route path='' element={<Home />} />
+      <Route path='sign_up' element={<UserSignup />} />
+      <Route path='login' element={<UserLogin />} />
+      <Route path='sign_up_success' element={<SignupSuccess />} />
+      <Route path='sign_up_employee' element={<SignUpEmployee />} />
+      <Route path='sign_up_employer' element={<SignUpEmployer />} />
+      <Route path='sign_up_employee/employee_signup_details' element={<EmployeeSignUpDetails />} />
+      <Route path='sign_up_employer/employer_signup_details' element={<EmployerSignUpDetails />} />
+      <Route path='user_type' element={<UserType />} />
       <Route path="*" element={<NoMatch />} />
+      </Route>
     </Routes>
     </div>
   );

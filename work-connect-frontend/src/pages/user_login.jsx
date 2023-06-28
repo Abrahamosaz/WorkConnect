@@ -33,7 +33,7 @@ function UserLogin() {
             <br />
 
             <p>Don't have an account?</p>
-            <Link to='/sign_up'>Register</Link>
+            <Link to='/user_type'>Register</Link>
         
         </div>
     )
