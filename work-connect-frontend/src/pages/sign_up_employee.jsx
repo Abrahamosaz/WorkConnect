@@ -4,102 +4,70 @@ function SignUpEmployee() {
 
     const navigate = useNavigate();
 
-    const [username, setUsername] = useState('');
-    const [firstname, setFirstname] = useState('');
-    const [lastname, setLastname] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmpassword, setConfirmpassword] = useState('');
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        
-        const url = 'http://localhost:8000/api/users/';
-        const response = fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                username: username,
-                email: email,
-                password: password,
-                first_name: firstname,
-                last_name: lastname,
-                confirm_password: confirmpassword
-            })
-        });
-        const data = await response;
-        const json_data = await data.json()
-        if (data.status !== 201) {
-        } else {
-        
-        }
-
-        navigate('employee_signup_details');
-    }
+    const [datebirth, setDatebirth] = useState('');
+    const [location, setLocation] = useState('');
+    const [skills, setSkills] = useState('');
+    const [country, setCountry] = useState('');
+    const [phonenumber, setPhonenumber] = useState('');
+    const [state, setState] = useState('');
 
   return (
     <div className="Sign-up-employee">
             <h1>Create an Account</h1>
             <h3>Set up your WorkConnect Job Seeker Account in seconds</h3>
-            <small>We only need a few details</small>
+            <h3>fill the below details</h3>
             <br />
             <br />
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="username">UserName:
+            <form >
+                <label htmlFor="date_birth">DateBirth:</label>
                     <input
                     type="text"
-                    name="UserName"
-                    placeholder='Username'
-                    id="username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)} />
-                </label>
+                    name="dateBirth"
+                    id="date_birth"
+                    value={datebirth}
+                    onChange={(e) => setDatebirth(e.target.value)} />
                 <br />
-                <label htmlFor="firstname">FirstName: 
-                    <input
-                    type="email"
-                    name="FirstName"
-                    placeholder='First name'
-                    id="firstname"
-                    value={firstname}
-                    onChange={(e) => setFirstname(e.target.value)} />
-                </label>
-                <br />
-                <label htmlFor="lastname">LastName: 
+                <label htmlFor="location">Location:</label>
                     <input
                     type="text"
-                    name="LastName"
-                    placeholder='Last name'
-                    id="lastname"
-                    value={lastname}
-                    onChange={(e) => setLastname(e.target.value)} />
-                </label>
+                    name="Location"
+                    id="location"
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)} />
                 <br />
-                <label htmlFor="email">Email: 
+                <label htmlFor="skills">Skills:</label> 
                     <input
-                    type="email"
-                    name="Email"
-                    placeholder='Email'
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)} />
-                </label>
+                    type="text"
+                    name="Skills"
+                    id="skills"
+                    value={skills}
+                    onChange={(e) => setSkills(e.target.value)} />
                 <br />
-                <label htmlFor="pass">PassWord: 
-                <input type="password" name="Password" placeholder='Password' id="pass" value={password}/>
-                </label>
+                <label htmlFor="phone_number">Phone Number:</label>
+                    <input
+                    type="text"
+                    name="PhoneNumber"
+                    id="phone_number"
+                    value={phonenumber}
+                    onChange={(e) => setPhonenumber(e.target.value)} />
                 <br />
-                <label htmlFor="pass_confirm">Confirm PassWord: 
-                    <input type="password" name="confirmPassword" placeholder='Confirm Password' id="pass_confirm" value={confirmpassword} />
-                </label>
+                <label htmlFor="country">Country: </label>
+                    <input
+                    type="text"
+                    name="Country"
+                    id="country"
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}/>
                 <br />
-
-                <input type="submit" value="Sign Up" />
+                <label htmlFor="state">State:</label> 
+                    <input
+                    type="text"
+                    name="State"
+                    id="State"
+                    value={state} />
+                <br />
+                <input type="submit" value="Next" />
             </form>
-            <br />
-
-            <p>Already signed up?</p>
-            <Link to='/login'>Login</Link>
         </div>)
   }
 

@@ -156,12 +156,12 @@ class ApplicationFromView(APIView):
 @api_view(['POST'])
 def RegisterEmployerUser(request):
     data = request.data
+    id = data.get('user').get('id')
+    del data['user']
     serializer = EmployerSerializer(data=data)
     if serializer.is_valid():
         serializer.validated_data['date_birth'] = date.fromisoformat(data['date_birth'])
-        user = User.objects.create(**data['user'])
-        user.set_password(user.password)
-        user.save()
+        user = User.objects.get(id=id)
         serializer.validated_data['user'] = user
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -172,12 +172,12 @@ def RegisterEmployerUser(request):
 @api_view(['POST'])
 def RegisterEmployeeUser(request):
     data = request.data
+    id = data.get('user').get('id')
+    del data['user']
     serializer = EmployeeSerializer(data=data)
     if serializer.is_valid():
         serializer.validated_data['date_birth'] = date.fromisoformat(data['date_birth'])
-        user = User.objects.create(**data['user'])
-        user.set_password(user.password)
-        user.save()
+        user = User.objects.get(id=id)
         serializer.validated_data['user'] = user
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -218,3 +218,10 @@ def create_user(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     else:
         return Response({'message': 'failed', 'error': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def get_latest_user(request):
+    user = User.objects.latest('date_joined')
+    serializer = UserSerializer(user)
+    return Response(serializer.data, status=status.HTTP_200_OK)

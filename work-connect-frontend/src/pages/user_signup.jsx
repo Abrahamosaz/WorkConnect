@@ -15,6 +15,9 @@ function UserSignup() {
     const [error, setError] = useState("");
 
 
+    
+    const navigate = useNavigate();
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -34,9 +37,20 @@ function UserSignup() {
         });
         const data = await response;
         const json_data = await data.json()
-        if (data.status !== 201) {
+        if (data.status === 201) {
+            console.log('success');
+            setIsError(false);
+            setError("");
+            setUsername("");
+            setFirstname("");
+            setLastname("");
+            setEmail("");
+            setPassword("");
+            setCofirmpassword("");
+            navigate('/user_type');
         } else {
-        
+            setIsError(true);
+            setError(json_data.error);
         }
     }
 
@@ -46,6 +60,7 @@ function UserSignup() {
             <h3>Set up your WorkConnect App in seconds</h3>
             <small>We only need a few details</small>
             <br />
+            <h3>{isError && error}</h3>
             <form className='sign-up-form' onSubmit={handleSubmit}>
                 <div>
                 <label htmlFor="name">UserName:</label>

@@ -2,12 +2,14 @@ from rest_framework import serializers
 from .models import (Post, Employee_user, Employer_user,
                      User, Comment, Job, Application_form)
 
+import re
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'email', 'password']
-
+        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'password']
+        read_only_fields = ['id']
 
 class PostSerializer(serializers.ModelSerializer):
     author = UserSerializer(required=False)
@@ -40,8 +42,7 @@ class EmployerSerializer(serializers.ModelSerializer):
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
-
+    
     class Meta:
         model = Employee_user
         exclude = ['profile_pic', 'date_birth']

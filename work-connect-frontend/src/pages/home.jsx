@@ -12,7 +12,7 @@ function Home() {
                 <h1>WorkConnect App</h1>
                 <h3>Welcome to WorkConnect App</h3>
                 <br />
-                <Link to='/user_type'>Sign Up</Link>
+                <Link to='/sign_up'>Sign Up</Link>
             </section>
         </div>
     </React.Fragment>)

@@ -10,7 +10,7 @@ function Navbar() {
             </div>
             <div className='nav-bar-right'>
                 <ul>
-                    <li><Link to='/user_type'>Sign up</Link></li>
+                    <li><Link to='/sign_up'>Sign up</Link></li>
                     <li><Link to='/login'>Login</Link></li>
                 </ul>
             </div>

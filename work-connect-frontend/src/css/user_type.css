@@ -1,0 +1,13 @@
+div.user-type {
+    display:flex;
+    margin: 50px auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-type div {
+
+    border: 2px solid black;
+    margin: 20px;
+    padding: 20px;
+}

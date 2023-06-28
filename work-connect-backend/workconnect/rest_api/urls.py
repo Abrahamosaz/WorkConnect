@@ -2,7 +2,7 @@ from django.urls import path
 from .views import (PostViews, RegisterEmployerUser,
                     RegisterEmployeeUser, UserLogin,
                     CommentViews, ApplicationFromView,
-                    JobViews, create_user
+                    JobViews, create_user, get_latest_user
                     )
 
 urlpatterns = [
@@ -13,5 +13,6 @@ urlpatterns = [
     path('login/', UserLogin),
     path('post/<int:post_id>/comments/', CommentViews.as_view()),
     path('jobs/', JobViews.as_view()),
-    path('application-form/<int:job_id>/', ApplicationFromView.as_view())
+    path('application-form/<int:job_id>/', ApplicationFromView.as_view()),
+    path('users/latest/', get_latest_user)
 ]
