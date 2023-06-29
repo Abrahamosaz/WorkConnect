@@ -198,7 +198,7 @@ def UserLogin(request):
             (token, created) = Token.objects.get_or_create(user=user)
             return Response({'message': 'success', 'token': token.key}, status=status.HTTP_202_ACCEPTED)
         else:
-            return Response({'message': 'Resgister a user'}, status=status.HTTP_401_UNAUTHORIZED)
+            return Response({'message': 'Register a user'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
 
