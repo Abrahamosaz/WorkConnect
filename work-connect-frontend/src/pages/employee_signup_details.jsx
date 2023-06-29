@@ -11,10 +11,44 @@ function EmployeeSignUpDetails() {
     const [state, setState] = useState('');
     const [country, setCountry] = useState('');
     const [profile_pic, setProfilePic] = useState('');
+    const [isError, setIsError] = useState(false);
+    const [error, setError] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        navigate("/sign_up_success", { replace: true });
+
+        const url = 'http://localhost:8000/api/register-employee/';
+        const response = fetch(url, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                date_birth: date_of_birth,
+                location: location,
+                skill: skills,
+                phone_number: phone_number,
+                profile_pic: profile_pic,
+                country: country,
+                state: state,
+            })
+        });
+        const data  = await response;
+        const json_data = await data.json();
+        if (data.status === 201) {
+            console.log('success');
+            setIsError(false);
+            setError("");
+            setDOB("");
+            setCountry("");
+            setLocation("");
+            setPhoneNumber("");
+            setProfilePic("");
+            setSkills("");
+            setState("");
+            navigate("/sign_up_success");
+        } else {
+            setIsError(true);
+            setError(json_data.error);
+        }
     }
 
   return (
@@ -23,6 +57,7 @@ function EmployeeSignUpDetails() {
             <h3>We need a few more details to create a great personalised experience for you</h3>
             <br />
             <br />
+            {isError && error}
             <form onSubmit={handleSubmit}>
                 <label htmlFor="dob">Date of Birth:
                     <input

@@ -24,8 +24,8 @@ function App() {
       <Route path='sign_up_success' element={<SignupSuccess />} />
       <Route path='sign_up_employee' element={<SignUpEmployee />} />
       <Route path='sign_up_employer' element={<SignUpEmployer />} />
-      <Route path='sign_up_employee/employee_signup_details' element={<EmployeeSignUpDetails />} />
-      <Route path='sign_up_employer/employer_signup_details' element={<EmployerSignUpDetails />} />
+      <Route path='employee_signup_details' element={<EmployeeSignUpDetails />} />
+      <Route path='employer_signup_details' element={<EmployerSignUpDetails />} />
       <Route path='user_type' element={<UserType />} />
       <Route path="*" element={<NoMatch />} />
       </Route>
