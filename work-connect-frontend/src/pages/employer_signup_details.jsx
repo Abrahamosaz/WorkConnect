@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
+import Navbar from './navbar';
 
 function EmployerSignUpDetails() {
     const navigate = useNavigate();
@@ -52,6 +53,7 @@ function EmployerSignUpDetails() {
     }
 
   return (
+    <React.Fragment>
     <div className="EmployerSignUpDetails">
             <h1>WorkConnect Account Setup</h1>
             <h3>We need a few more details to create a great personalised experience for you</h3>
@@ -132,7 +134,8 @@ function EmployerSignUpDetails() {
                 <input type="submit" value="Save" />
             </form>
             <br />
-        </div>)
+        </div>
+        </React.Fragment>)
   }
 
 export default EmployerSignUpDetails;

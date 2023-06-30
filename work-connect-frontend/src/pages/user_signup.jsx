@@ -3,6 +3,7 @@ import { useState, createContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate, Navigate } from 'react-router-dom';
 import '../css/user_signup.css';
+import { UserContext } from '../contexts/user.contexts';
 
 function UserSignup() {
     const [username, setUsername] = useState("");
@@ -17,6 +18,8 @@ function UserSignup() {
 
     
     const navigate = useNavigate();
+
+    const { setIsLoggedIn } = useContext(UserContext);
 
 
     const handleSubmit = async (event) => {
@@ -39,6 +42,7 @@ function UserSignup() {
         const json_data = await data.json()
         if (data.status === 201) {
             console.log('success');
+            localStorage.setItem('token', data.token);
             setIsError(false);
             setError("");
             setUsername("");
@@ -47,6 +51,7 @@ function UserSignup() {
             setEmail("");
             setPassword("");
             setCofirmpassword("");
+            setIsLoggedIn(true);
             navigate('/user_type');
         } else {
             setIsError(true);
@@ -55,6 +60,7 @@ function UserSignup() {
     }
 
     return (
+        <React.Fragment>
         <div className="sign-up">
             <h1>Create an Account</h1>
             <h3>Set up your WorkConnect App in seconds</h3>
@@ -125,6 +131,7 @@ function UserSignup() {
             <p>Already signed up?</p>
             <Link to='/login'>Login</Link>
         </div>
+        </React.Fragment>
     );
 }
 
