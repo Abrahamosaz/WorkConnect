@@ -44,7 +44,7 @@ function EmployeeSignUpDetails() {
             setProfilePic("");
             setSkills("");
             setState("");
-            navigate("/sign_up_success");
+            navigate("sign_up_success");
         } else {
             setIsError(true);
             setError(json_data.error);
@@ -52,6 +52,7 @@ function EmployeeSignUpDetails() {
     }
 
   return (
+    <React.Fragment>
     <div className="">
             <h1>WorkConnect Account Setup</h1>
             <h3>We need a few more details to create a great personalised experience for you</h3>
@@ -135,7 +136,8 @@ function EmployeeSignUpDetails() {
                 <input type="submit" value="Save" />
             </form>
             <br />
-        </div>)
+        </div>
+        </React.Fragment>)
   }
 
 export default EmployeeSignUpDetails;

@@ -1,17 +1,26 @@
 import React from 'react'
 
-function Posts ({posts}) {
+const Posts = ({ posts }) => {
+  const postCount = posts.length;
   return (
-    <div>
-        {/* {posts.map((post, index) => {
-            return (<div key={index}>
-                <h2>{post.title}</h2>
-                <h2>{post.content}</h2>
-                <h2>{post.author}</h2>
-            </div>)
-        })} */}
-    </div>
+    <React.Fragment>
+    {postCount > 0?
+    (<div>
+        {posts.map(post=> (
+                <div>
+                    <h2>{post.title}</h2>
+                    <p>{post.content}</p>
+                    <b><small>{post.author.username}</small></b>
+                </div>
+            )
+        )}
+    </div>):
+    (<div>
+          <h4>Login to see posts</h4>
+    </div>)
+    }
+    </React.Fragment>
   )
 }
 
-export default Posts
+export default Posts;

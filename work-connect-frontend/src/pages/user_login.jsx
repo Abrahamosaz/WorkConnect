@@ -1,14 +1,17 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { UserContext } from '../contexts/user.contexts';
 
-function UserLogin() {
-    const [email, setEmail] = useState("");
+const UserLogin = () => {
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [isError, setIsError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
 
     const  navigate = useNavigate();
+
+    const { setIsLoggedIn } = useContext(UserContext);
 
     const handleSubmit = async (event) => {
 
@@ -17,11 +20,11 @@ function UserLogin() {
         const response = await fetch(url, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                email: email,
-                password: password
+                username: username,
+                password: password,
             })
         });
         const data = await response.json();
@@ -29,6 +32,7 @@ function UserLogin() {
             localStorage.setItem('token', data.token);
             setIsError(false);
             setErrorMessage("");
+            setIsLoggedIn(true);
             navigate('/');
         } else {
             setIsError(true);
@@ -36,19 +40,20 @@ function UserLogin() {
         }
     }
     return (
+        <React.Fragment>
         <div className="App App-header">
             <h1>Welcome back</h1>
             <h3>Login to your WorkConnect Account</h3>
             <br />
             {isError && <h2>{errorMessage}</h2>}
             <form action="" onSubmit={handleSubmit}>
-                <label htmlFor="email">Email: 
+                <label htmlFor="username">Username: 
                     <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)} />
+                    type="text"
+                    name="username"
+                    id="username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)} />
                 </label>
                 <br />
                 <label htmlFor="pass">Password: 
@@ -66,9 +71,10 @@ function UserLogin() {
             <br />
 
             <p>Don't have an account?</p>
-            <Link to='/user_type'>Register</Link>
+            <Link to='/sign_up'>Register</Link>
         
         </div>
+        </React.Fragment>
     )
 }
 
