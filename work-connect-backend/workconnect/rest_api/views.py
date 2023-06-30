@@ -187,13 +187,13 @@ def RegisterEmployeeUser(request):
 
 @api_view(['POST'])
 def UserLogin(request):
-    username = request.data.get('username', None)
+    email = request.data.get('email', None)
     password = request.data.get('password', None)
 
-    if not username or not password:
+    if not email or not password:
         return Response({'error': 'No username or password'}, status=status.HTTP_400_BAD_REQUEST)
     else:
-        user = authenticate(username=username, password=password)
+        user = authenticate(email=email, password=password)
         if user:
             (token, created) = Token.objects.get_or_create(user=user)
             return Response({'message': 'success', 'token': token.key}, status=status.HTTP_202_ACCEPTED)
