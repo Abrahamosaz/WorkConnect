@@ -51,7 +51,7 @@ function SignUpEmployee() {
                     value={phonenumber}
                     onChange={(e) => setPhonenumber(e.target.value)} />
                 <br />
-                <label htmlFor="country">Country: </label>
+                <label htmlFor="country">Country:</label>
                     <input
                     type="text"
                     name="Country"
@@ -64,7 +64,8 @@ function SignUpEmployee() {
                     type="text"
                     name="State"
                     id="State"
-                    value={state} />
+                    value={state}
+                    onChange={(e) => setState(e.target.value)}/>
                 <br />
                 <input type="submit" value="Next" />
             </form>
