@@ -1,4 +1,4 @@
-from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.decorators import api_view, authentication_classes, permission_classes, parser_classes
 from rest_framework.response import Response
 from .serializers import (
     PostSerializer, EmployeeSerializer,
@@ -16,6 +16,7 @@ from .models import (
 from datetime import date
 from rest_framework import authentication, permissions
 from django.contrib.auth import authenticate
+from rest_framework.parsers import MultiPartParser, FormParser
 
 class PostViews(APIView):
 
@@ -170,6 +171,7 @@ def RegisterEmployerUser(request):
 
 
 @api_view(['POST'])
+@parser_classes([MultiPartParser, FormParser])
 def RegisterEmployeeUser(request):
     data = request.data
     id = data.get('user').get('id')
@@ -182,7 +184,7 @@ def RegisterEmployeeUser(request):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     else:
-        return Response({'message': 'invalid data', 'errors': serializer.errors})
+        return Response({'message': 'invalid data', 'errors': serializer.errors},status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['POST'])

@@ -6,12 +6,20 @@ import '../css/user_signup.css';
 import { UserContext } from '../contexts/user.contexts';
 
 function UserSignup() {
-    const [username, setUsername] = useState("");
-    const [firstname, setFirstname] = useState("");
-    const [lastname, setLastname] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmpassword, setCofirmpassword] = useState("");
+    const [userInfo, setUserInfo] = useState({
+        username: '',
+        email: '',
+        password: '',
+        confirmpassword: '',
+        firstname: '',
+        lastname: ''
+    });
+    // const [username, setUsername] = useState("");
+    // const [firstname, setFirstname] = useState("");
+    // const [lastname, setLastname] = useState("");
+    // const [email, setEmail] = useState("");
+    // const [password, setPassword] = useState("");
+    // const [confirmpassword, setCofirmpassword] = useState("");
     const [isError, setIsError] = useState(false);
     const [error, setError] = useState("");
 
@@ -20,6 +28,12 @@ function UserSignup() {
     const navigate = useNavigate();
 
     const { setIsLoggedIn } = useContext(UserContext);
+
+    const handleChange = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setUserInfo({...userInfo, [name]: value});
+    };
 
 
     const handleSubmit = async (event) => {
@@ -30,12 +44,12 @@ function UserSignup() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                username: username,
-                email: email,
-                password: password,
-                first_name: firstname,
-                last_name: lastname,
-                confirm_password: confirmpassword
+                username: userInfo.username,
+                email: userInfo.email,
+                password: userInfo.password,
+                first_name: userInfo.firstname,
+                last_name: userInfo.lastname,
+                confirm_password: userInfo.confirmpassword
             })
         });
         const data = await response;
@@ -44,13 +58,14 @@ function UserSignup() {
             console.log('success');
             localStorage.setItem('token', data.token);
             setIsError(false);
-            setError("");
-            setUsername("");
-            setFirstname("");
-            setLastname("");
-            setEmail("");
-            setPassword("");
-            setCofirmpassword("");
+            setUserInfo({
+                username: '',
+                password: '',
+                confirmpassword: '',
+                firstname: '',
+                lastname: '',
+                email: ''
+            })
             setIsLoggedIn(true);
             navigate('/user_type');
         } else {
@@ -72,55 +87,55 @@ function UserSignup() {
                 <label htmlFor="name">UserName:</label>
                     <input
                     type="text"
-                    name="userName"
+                    name="username"
                     id="name"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)} />
+                    value={userInfo.username}
+                    onChange={handleChange} />
                 </div>
                 <div>
                 <label htmlFor="firstname">FirstName:</label>
                     <input
                     type="text"
-                    name="firstName"
+                    name="firstname"
                     id="email"
-                    value={firstname}
-                    onChange={(e) => setFirstname(e.target.value)} />
+                    value={userInfo.firstname}
+                    onChange={handleChange} />
                 </div>
                 <div>
                 <label htmlFor="last_name">LastName:</label>
                     <input
                     type="text"
-                    name="lastName"
+                    name="lastname"
                     id="last_name"
-                    value={lastname}
-                    onChange={(e) => setLastname(e.target.value)} />
+                    value={userInfo.lastname}
+                    onChange={handleChange} />
                 </div>
                 <div>
                 <label htmlFor="email">Email:</label>
                     <input
                     type="email"
-                    name="Email"
+                    name="email"
                     id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)} />
+                    value={userInfo.email}
+                    onChange={handleChange} />
                 </div>
                 <div>
                 <label htmlFor="pass">Password:</label>
                 <input 
                 type="password"
-                name="pass"
+                name="password"
                 id="pass"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)} />
+                value={userInfo.password}
+                onChange={handleChange} />
                 </div>
                 <div>
                 <label htmlFor="pass_confirm">Confirm Password:</label>
                     <input
                     type="password"
-                    name="pass_confirm"
+                    name="confirmpassword"
                     id="pass_confirm"
-                    value={confirmpassword}
-                    onChange={(e) => setCofirmpassword(e.target.value)} />
+                    value={userInfo.confirmpassword}
+                    onChange={handleChange} />
                 </div>
                 <div>
                 <input type="submit" value="Sign Up" />

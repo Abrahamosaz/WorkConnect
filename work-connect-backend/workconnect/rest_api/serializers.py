@@ -45,7 +45,7 @@ class EmployeeSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Employee_user
-        exclude = ['profile_pic', 'date_birth']
+        exclude = ['date_birth']
         read_only_fields = ['user']
 
     def create(self, validated_data):

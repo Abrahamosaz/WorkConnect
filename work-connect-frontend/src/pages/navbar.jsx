@@ -17,6 +17,7 @@ function Navbar() {
         localStorage.removeItem('token');
         setToken(null);
         setIsLoggedIn(false);
+        navigate('/login');
     }
 
 

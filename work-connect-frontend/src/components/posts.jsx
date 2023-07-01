@@ -7,7 +7,7 @@ const Posts = ({ posts }) => {
     {postCount > 0?
     (<div>
         {posts.map(post=> (
-                <div>
+                <div key={post.id}>
                     <h2>{post.title}</h2>
                     <p>{post.content}</p>
                     <b><small>{post.author.username}</small></b>

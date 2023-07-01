@@ -4,14 +4,19 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../contexts/user.contexts';
 
 const UserLogin = () => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [userdetails, setUserdetails] = useState({email: '', password: ''});
     const [isError, setIsError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
 
     const  navigate = useNavigate();
 
-    const { setIsLoggedIn } = useContext(UserContext);
+    const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
+    
+    const handleChange = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setUserdetails({...userdetails, [name]: value});
+    };
 
     const handleSubmit = async (event) => {
 
@@ -23,8 +28,8 @@ const UserLogin = () => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                username: username,
-                password: password,
+                email: userdetails.email,
+                password: userdetails.password,
             })
         });
         const data = await response.json();
@@ -33,6 +38,7 @@ const UserLogin = () => {
             setIsError(false);
             setErrorMessage("");
             setIsLoggedIn(true);
+            console.log(isLoggedIn);
             navigate('/');
         } else {
             setIsError(true);
@@ -47,22 +53,22 @@ const UserLogin = () => {
             <br />
             {isError && <h2>{errorMessage}</h2>}
             <form action="" onSubmit={handleSubmit}>
-                <label htmlFor="username">Username: 
+                <label htmlFor="email">Email: 
                     <input
-                    type="text"
-                    name="username"
-                    id="username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)} />
+                    type="email"
+                    name="email"
+                    id="email"
+                    value={userdetails.username}
+                    onChange={handleChange} />
                 </label>
                 <br />
                 <label htmlFor="pass">Password: 
                 <input
                 type="password"
-                name="pass"
+                name="password"
                 id="pass"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}/>
+                value={userdetails.password}
+                onChange={handleChange}/>
                 </label>
                 <br />
 
