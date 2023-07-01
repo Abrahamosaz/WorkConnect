@@ -3,18 +3,25 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
+def upload_employee_file (instance, filename):
+    return '/'.join(['employee_user', str(instance.user.username), filename])
+
+def upload_employer_file (instance, filename):
+    return '/'.join(['employer_user', str(instance.user.username), filename])
+
 class Employee_user(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     date_birth = models.DateField(blank=False, null=False)
     location = models.CharField(max_length=100)
     skill = models.CharField(max_length=1000)
     phone_number = models.CharField(max_length=15, blank=False, null=False, unique=True)
-    profile_pic = models.ImageField(upload_to='employee_uploads/', blank=True, null=True)
+    profile_pic = models.ImageField(upload_to=upload_employee_file, blank=True, null=True)
     country = models.CharField(max_length=100, null=False, blank=False)
     state = models.CharField(max_length=100, null=False, blank=False)
 
     def __str__(self):
         return self.user.first_name
+
 
 class Employer_user(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -24,7 +31,7 @@ class Employer_user(models.Model):
     company_name = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
     country = models.CharField(max_length=100, null=False, blank=False)
-    profile_pic = models.ImageField(upload_to='employer_uploads/', blank=True, null=True)
+    profile_pic = models.ImageField(upload_to=upload_employer_file, blank=True, null=True)
 
     def __str__(self):
         return self.user.first_name

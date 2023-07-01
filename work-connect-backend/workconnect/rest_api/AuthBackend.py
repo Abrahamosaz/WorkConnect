@@ -10,6 +10,7 @@ class MyAuthBackend(BaseBackend):
         except User.DoesNotExist:
             return None
         if user.check_password(password):
+            print('get here')
             return user if user.is_active else None
         else:
             None
