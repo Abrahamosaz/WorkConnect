@@ -1,16 +1,21 @@
 import React from 'react'
+import '../css/posts.css';
+import Comment from  './Comment';
+
 
 const Posts = ({ posts }) => {
   const postCount = posts.length;
   return (
     <React.Fragment>
     {postCount > 0?
-    (<div>
-        {posts.map(post=> (
+    (<div className='posts'>
+        {posts.map(post => (
                 <div key={post.id}>
                     <h2>{post.title}</h2>
                     <p>{post.content}</p>
-                    <b><small>{post.author.username}</small></b>
+                    <b><small>author: {post.author.username}</small></b>
+                    <hr></hr>
+                    <Comment props={post} />
                 </div>
             )
         )}

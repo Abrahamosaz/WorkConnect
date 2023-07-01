@@ -29,18 +29,20 @@ function EmployeeSignUpDetails() {
     }
 
     const registerUser = async (url, data) => {
-        const body = {...employeedetails, user: data};
+        const form = new FormData();
+        form.append('user_id', data.id);
 
-        console.log(body);
+        for (const key in employeedetails) {
+            form.append(key, employeedetails[key]);
+        }
+
         const res = await fetch(url, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-        })
+            body: form
+        });
         const json_data = await res.json();
         console.log(json_data);
+        navigate('/login');
     };
 
     const handleForm =  async (e) => {
@@ -55,16 +57,10 @@ function EmployeeSignUpDetails() {
     };
 
     const handleFile = (e) => {
-        let fileObj = { ...employeedetails };
-        fileObj['profile_pic'] = e.target.files[0];
-        setEmployeedetails(fileObj);
+        const name = e.target.name;
+        const file = e.target.files[0];
+        setEmployeedetails({...employeedetails, [name]: file});
     };
-    // const [datebirth, setDatebirth] = useState('');
-    // const [location, setLocation] = useState('');
-    // const [skills, setSkills] = useState('');
-    // const [country, setCountry] = useState('');
-    // const [phonenumber, setPhonenumber] = useState('');
-    const [state, setState] = useState('');
 
   return (
     <div className="Sign-up-employee">
@@ -73,7 +69,7 @@ function EmployeeSignUpDetails() {
             <h3>fill the below details</h3>
             <br />
             <br />
-            <form onSubmit={handleForm}>
+            <form id='form' onSubmit={handleForm}>
                 <label htmlFor="date_birth">DateBirth:</label>
                     <input
                     type="date"
@@ -128,7 +124,6 @@ function EmployeeSignUpDetails() {
                     name="profile_pic"
                     id="profile_pic"
                     accept="image/jpeg,image/png,image/gif"
-                    value={employeedetails.profile_pic}
                     onChange={handleFile}/>
                 <br />
                 <input type="submit" value="Next" />

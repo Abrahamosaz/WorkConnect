@@ -8,7 +8,7 @@ import SignupSuccess from './pages/signup_success';
 import NoMatch from './pages/nomatch';
 import UserType from './pages/user_type';
 import EmployeeSignUpDetails from './pages/employee_signup_details';
-
+import EmployerSignUpDetails from './pages/employer_signup_details';
 
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
       <Route path='login' element={<UserLogin />} />
       <Route path='sign_up_success' element={<SignupSuccess />} />
       <Route path='employee_signup_details' element={<EmployeeSignUpDetails />} />
-      {/* <Route path='employer_signup_details' element={<EmployerSignUpDetails />} /> */}
+      <Route path='employer_signup_details' element={<EmployerSignUpDetails />} />
       <Route path='user_type' element={<UserType />} />
       <Route path="*" element={<NoMatch />} />
     </Route>

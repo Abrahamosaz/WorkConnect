@@ -1,141 +1,134 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
-import Navbar from './navbar';
+import { useNavigate } from 'react-router-dom';
+
 
 function EmployerSignUpDetails() {
+
     const navigate = useNavigate();
 
-    const [date_of_birth, setDOB] = useState('');
-    const [phone_number, setPhoneNumber] = useState('');
-    const [company, setCompany] = useState('');
-    const [location, setLocation] = useState('');
-    const [state, setState] = useState('');
-    const [country, setCountry] = useState('');
-    const [profile_pic, setProfilePic] = useState('');
-    const [isError, setIsError] = useState(false);
-    const [error, setError] = useState("");
+    const [employerdetails, setEmployeedetails] = useState({
+        date_birth: '',
+        location: '',
+        company_name: '',
+        phone_number: '',
+        country: '',
+        state: '',
+        profile_pic: ''
+    });
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-    
-            const url = 'http://localhost:8000/api/register-employee/';
-            const response = fetch(url, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    date_birth: date_of_birth,
-                    location: location,
-                    company: company,
-                    phone_number: phone_number,
-                    profile_pic: profile_pic,
-                    country: country,
-                    state: state,
-                })
-            });
-            const data  = await response;
-            const json_data = await data.json();
-            if (data.status === 201) {
-                console.log('success');
-                setIsError(false);
-                setError("");
-                setDOB("");
-                setCountry("");
-                setLocation("");
-                setPhoneNumber("");
-                setProfilePic("");
-                setCompany("");
-                setState("");
-                navigate("/sign_up_success");
-            } else {
-                setIsError(true);
-                setError(json_data.error);
-            }
+    const handleChange = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setEmployeedetails({...employerdetails, [name]: value});
+    };
+
+    const getUser = async (url) => {
+        const res = await fetch(url);
+        const data = await res.json();
+        return data;
     }
 
+    const registerUser = async (url, data) => {
+        const form = new FormData();
+        form.append('user_id', data.id);
+
+        for (const key in employerdetails) {
+            form.append(key, employerdetails[key]);
+        }
+
+        const res = await fetch(url, {
+            method: 'POST',
+            body: form
+        });
+        const json_data = await res.json();
+        console.log(json_data);
+        navigate('/login');
+    };
+
+    const handleForm =  async (e) => {
+        e.preventDefault();
+        const user = getUser('http://localhost:8000/api/users/latest/');
+        user
+        .then((data) => {
+            const url = "http://localhost:8000/api/register-employer/";
+            registerUser(url, data);
+        })
+        .catch((err) => console.log(err));
+    };
+
+    const handleFile = (e) => {
+        const name = e.target.name;
+        const file = e.target.files[0];
+        setEmployeedetails({...employerdetails, [name]: file});
+    };
+
   return (
-    <React.Fragment>
-    <div className="EmployerSignUpDetails">
-            <h1>WorkConnect Account Setup</h1>
-            <h3>We need a few more details to create a great personalised experience for you</h3>
+    <div className="Sign-up-employee">
+            <h1>Create an Account</h1>
+            <h3>Set up your WorkConnect Job Seeker Account in seconds</h3>
+            <h3>fill the below details</h3>
             <br />
             <br />
-            {isError && error}
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="dob">Date of Birth:
+            <form id='form' onSubmit={handleForm}>
+                <label htmlFor="date_birth">DateBirth:</label>
                     <input
                     type="date"
-                    name="date_of_birth"
-                    placeholder='Date of Birth'
-                    id="dob"
-                    value={date_of_birth}
-                    onChange={(e) => setDOB(e.target.value)} />
-                </label>
+                    name="date_birth"
+                    id="date_birth"
+                    value={employerdetails.date_birth}
+                    onChange={handleChange} />
                 <br />
-                <label htmlFor="phone">Phone number: 
-                    <input
-                    type="tel"
-                    name="phone_number"
-                    placeholder='Phone number'
-                    id="phone"
-                    value={phone_number}
-                    onChange={(e) => setPhoneNumber(e.target.value)} />
-                </label>
-                <br />
-                <label htmlFor="company">Company name: 
-                    <input
-                    type="text"
-                    name="company"
-                    placeholder='Last name'
-                    id="company"
-                    value={company}
-                    onChange={(e) => setCompany(e.target.value)} />
-                </label>
-                <br />
-                <label htmlFor="location">Location: 
+                <label htmlFor="location">Location:</label>
                     <input
                     type="text"
                     name="location"
-                    placeholder='Location'
                     id="location"
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)} />
-                </label>
+                    value={employerdetails.location}
+                    onChange={handleChange} />
                 <br />
-                <label htmlFor="state">State: 
+                <label htmlFor="companyname">Company Name:</label> 
                     <input
                     type="text"
-                    name="state"
-                    placeholder='State'
-                    id="state"
-                    value={state}
-                    onChange={(e) => setState(e.target.value)} />
-                </label>
+                    name="company_name"
+                    id="companyname"
+                    value={employerdetails.skill}
+                    onChange={handleChange} />
                 <br />
-                <label htmlFor="country">Country: 
+                <label htmlFor="phone_number">Phone Number:</label>
+                    <input
+                    type="text"
+                    name="phone_number"
+                    id="phone_number"
+                    value={employerdetails.phone_number}
+                    onChange={handleChange} />
+                <br />
+                <label htmlFor="country">Country:</label>
                     <input
                     type="text"
                     name="country"
-                    placeholder='Country'
                     id="country"
-                    value={country}
-                    onChange={(e) => setCountry(e.target.value)} />
-                </label>
+                    value={employerdetails.country}
+                    onChange={handleChange}/>
                 <br />
-                <label htmlFor="profile_pic">Profile Picture: 
+                <label htmlFor="state">State:</label> 
+                    <input
+                    type="text"
+                    name="state"
+                    id="State"
+                    value={employerdetails.state}
+                    onChange={handleChange}/>
+                <br />
+                <label htmlFor="profile_pic">Profile Picture:</label>
                     <input
                     type="file"
                     name="profile_pic"
                     id="profile_pic"
-                    value={profile_pic}
-                    onChange={(e) => setProfilePic(e.target.value)} />
-                </label>
+                    accept="image/jpeg,image/png,image/gif"
+                    onChange={handleFile}/>
                 <br />
-
-                <input type="submit" value="Save" />
+                <input type="submit" value="Next" />
             </form>
-            <br />
-        </div>
-        </React.Fragment>)
+        </div>)
   }
 
 export default EmployerSignUpDetails;
