@@ -59,7 +59,8 @@ const UserLogin = () => {
                     name="email"
                     id="email"
                     value={userdetails.username}
-                    onChange={handleChange} />
+                    onChange={handleChange}
+                    required />
                 </label>
                 <br />
                 <label htmlFor="pass">Password: 
@@ -68,7 +69,8 @@ const UserLogin = () => {
                 name="password"
                 id="pass"
                 value={userdetails.password}
-                onChange={handleChange}/>
+                onChange={handleChange}
+                required />
                 </label>
                 <br />
 
