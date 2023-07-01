@@ -90,7 +90,8 @@ function UserSignup() {
                     name="username"
                     id="name"
                     value={userInfo.username}
-                    onChange={handleChange} />
+                    onChange={handleChange}
+                    required />
                 </div>
                 <div>
                 <label htmlFor="firstname">FirstName:</label>
@@ -99,7 +100,8 @@ function UserSignup() {
                     name="firstname"
                     id="email"
                     value={userInfo.firstname}
-                    onChange={handleChange} />
+                    onChange={handleChange}
+                    required />
                 </div>
                 <div>
                 <label htmlFor="last_name">LastName:</label>
@@ -108,7 +110,8 @@ function UserSignup() {
                     name="lastname"
                     id="last_name"
                     value={userInfo.lastname}
-                    onChange={handleChange} />
+                    onChange={handleChange}
+                    required />
                 </div>
                 <div>
                 <label htmlFor="email">Email:</label>
@@ -117,7 +120,8 @@ function UserSignup() {
                     name="email"
                     id="email"
                     value={userInfo.email}
-                    onChange={handleChange} />
+                    onChange={handleChange}
+                    required />
                 </div>
                 <div>
                 <label htmlFor="pass">Password:</label>
@@ -126,7 +130,8 @@ function UserSignup() {
                 name="password"
                 id="pass"
                 value={userInfo.password}
-                onChange={handleChange} />
+                onChange={handleChange}
+                required />
                 </div>
                 <div>
                 <label htmlFor="pass_confirm">Confirm Password:</label>
@@ -135,7 +140,8 @@ function UserSignup() {
                     name="confirmpassword"
                     id="pass_confirm"
                     value={userInfo.confirmpassword}
-                    onChange={handleChange} />
+                    onChange={handleChange}
+                    required />
                 </div>
                 <div>
                 <input type="submit" value="Sign Up" />

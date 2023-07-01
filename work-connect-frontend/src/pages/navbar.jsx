@@ -9,9 +9,6 @@ function Navbar() {
     const [token, setToken] = useState(localStorage.getItem('token'));
 
     const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
-    if (token === null || token === '') {
-        setIsLoggedIn(false);
-    }
 
     const logout = () => {
         localStorage.removeItem('token');
@@ -22,7 +19,7 @@ function Navbar() {
 
 
     useEffect(() => {
-        if (!token) {
+        if (token === null || token === '') {
             setIsLoggedIn(false);
         } else {
             setIsLoggedIn(true);
