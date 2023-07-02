@@ -10,7 +10,7 @@ const UserLogin = () => {
 
     const  navigate = useNavigate();
 
-    const { isLoggedIn, setIsLoggedIn, setUserInfo } = useContext(UserContext);
+    const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
     
     const handleChange = (e) => {
         const name = e.target.name;
