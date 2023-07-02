@@ -10,7 +10,7 @@ const UserLogin = () => {
 
     const  navigate = useNavigate();
 
-    const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
+    const { isLoggedIn, setIsLoggedIn, setUserInfo } = useContext(UserContext);
     
     const handleChange = (e) => {
         const name = e.target.name;
@@ -38,7 +38,6 @@ const UserLogin = () => {
             setIsError(false);
             setErrorMessage("");
             setIsLoggedIn(true);
-            console.log(isLoggedIn);
             navigate('/');
         } else {
             setIsError(true);

@@ -13,7 +13,8 @@ function EmployerSignUpDetails() {
         phone_number: '',
         country: '',
         state: '',
-        profile_pic: ''
+        profile_pic: '',
+        about_company: ''
     });
 
     const handleChange = (e) => {
@@ -116,6 +117,14 @@ function EmployerSignUpDetails() {
                     name="state"
                     id="State"
                     value={employerdetails.state}
+                    onChange={handleChange}/>
+                <br />
+                <label htmlFor="about_company">About company:</label> 
+                    <input
+                    type="text"
+                    name="about_company"
+                    id="about_company"
+                    value={employerdetails.about_company}
                     onChange={handleChange}/>
                 <br />
                 <label htmlFor="profile_pic">Profile Picture:</label>

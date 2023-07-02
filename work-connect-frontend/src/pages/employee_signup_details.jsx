@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 function EmployeeSignUpDetails() {
 
     const navigate = useNavigate();
+
 
     const [employeedetails, setEmployeedetails] = useState({
         date_birth: '',
@@ -13,7 +14,10 @@ function EmployeeSignUpDetails() {
         phone_number: '',
         country: '',
         state: '',
-        profile_pic: ''
+        profile_pic: '',
+        about_me: '',
+        work_experience: '',
+        education: ''
     });
 
     const handleChange = (e) => {
@@ -116,6 +120,30 @@ function EmployeeSignUpDetails() {
                     name="state"
                     id="State"
                     value={employeedetails.state}
+                    onChange={handleChange}/>
+                <br />
+                <label htmlFor="education">Education:</label> 
+                    <input
+                    type="text"
+                    name="education"
+                    id="education"
+                    value={employeedetails.education}
+                    onChange={handleChange}/>
+                <br />
+                <label htmlFor="work_experience">Work experience:</label> 
+                    <input
+                    type="text"
+                    name="work_experience"
+                    id="work_experience"
+                    value={employeedetails.work_experience}
+                    onChange={handleChange}/>
+                <br />
+                <label htmlFor="aboutMe">About me:</label> 
+                    <input
+                    type="text"
+                    name="about_me"
+                    id="aboutMe"
+                    value={employeedetails.about_me}
                     onChange={handleChange}/>
                 <br />
                 <label htmlFor="profile_pic">Profile Picture:</label>

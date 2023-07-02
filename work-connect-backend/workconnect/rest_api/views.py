@@ -185,6 +185,31 @@ def RegisterEmployeeUser(request):
         return Response({'message': 'invalid data', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 
+@api_view(['GET'])
+@authentication_classes([authentication.TokenAuthentication])
+@permission_classes([permissions.IsAuthenticated])
+def get_user_info(request):
+    user = request.user
+    user_type = request.query_params.get('user', None)
+    if user is None:
+        return Response({'message': 'bad request'}, status=status.HTTP_400_BAD_REQUEST)
+    if user_type == 'employee':
+        try:
+            user = Employee_user.objects.get(user=user)
+        except Employee_user.DoesNotExist:
+            return Response({'message': 'user does not exist'}, status=status.HTTP_404_NOT_FOUND)
+        serializer = EmployeeSerializer(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    else:
+        try:
+            user = Employer_user.objects.get(user=user)
+        except Employer_user.DoesNotExist:
+            return Response({'message': 'user does not exist'}, status=status.HTTP_404_NOT_FOUND)
+        serializer = EmployerSerializer(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+
 @api_view(['POST'])
 def UserLogin(request):
     email = request.data.get('email', None)
@@ -225,3 +250,19 @@ def get_latest_user(request):
     user = User.objects.latest('date_joined')
     serializer = UserSerializer(user)
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+@authentication_classes([authentication.TokenAuthentication])
+@permission_classes([permissions.IsAuthenticated])
+def check_user(request):
+    user = request.user
+    try:
+        Employer_user.objects.get(user=user)
+    except Employer_user.DoesNotExist:
+        try:
+            Employee_user.objects.get(user=user)
+        except Employee_user.DoesNotExist:
+            return Response({'user': 'user not found'}, status=status.HTTP_404_NOT_FOUND)
+        return Response({'user': 'employee'}, status=status.HTTP_200_OK)
+    return Response({'user': 'employer'}, status=status.HTTP_200_OK)
