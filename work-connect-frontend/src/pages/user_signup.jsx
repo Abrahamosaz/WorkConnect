@@ -150,7 +150,7 @@ function UserSignup() {
             <br />
 
             <p>Already signed up?</p>
-            <Link to='/login'>Login</Link>
+            <Link to='/auth/login'>Login</Link>
         </div>
         </React.Fragment>
     );

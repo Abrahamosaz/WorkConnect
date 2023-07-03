@@ -14,7 +14,7 @@ function Navbar() {
         localStorage.removeItem('token');
         setToken(null);
         setIsLoggedIn(false);
-        navigate('/login');
+        navigate('/auth/login');
     }
 
 
@@ -40,8 +40,8 @@ function Navbar() {
                     <li onClick={logout}><Link to='/'>Logout</Link></li>:
                     (
                         <React.Fragment>
-                            <li><Link to='/login'>Login</Link></li>
-                            <li><Link to='/sign_up'>Sign up</Link></li>
+                            <li><Link to='/auth/login'>Login</Link></li>
+                            <li><Link to='/auth/sign_up'>Sign up</Link></li>
                         </React.Fragment>
                     )
                     }

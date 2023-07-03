@@ -79,7 +79,7 @@ const UserLogin = () => {
             <br />
 
             <p>Don't have an account?</p>
-            <Link to='/sign_up'>Register</Link>
+            <Link to='/auth/sign_up'>Register</Link>
         
         </div>
         </React.Fragment>
