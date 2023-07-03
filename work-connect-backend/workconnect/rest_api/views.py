@@ -16,7 +16,7 @@ from .models import (
 from datetime import date
 from rest_framework import authentication, permissions
 from django.contrib.auth import authenticate
-from rest_framework.parsers import MultiPartParser, FormParser
+import json
 
 class PostViews(APIView):
 
@@ -157,8 +157,8 @@ class ApplicationFromView(APIView):
 @api_view(['POST'])
 def RegisterEmployerUser(request):
     data = request.data
-    id = data.get('user').get('id')
-    del data['user']
+    print(data)
+    id = data.get('user_id')
     serializer = EmployerSerializer(data=data)
     if serializer.is_valid():
         serializer.validated_data['date_birth'] = date.fromisoformat(data['date_birth'])
@@ -167,15 +167,13 @@ def RegisterEmployerUser(request):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     else:
-        return Response({'message': 'invalid data', 'errors': serializer.errors})
+        return Response({'message': 'invalid data', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['POST'])
-@parser_classes([MultiPartParser, FormParser])
 def RegisterEmployeeUser(request):
     data = request.data
-    id = data.get('user').get('id')
-    del data['user']
+    id = data.get('user_id')
     serializer = EmployeeSerializer(data=data)
     if serializer.is_valid():
         serializer.validated_data['date_birth'] = date.fromisoformat(data['date_birth'])
@@ -184,7 +182,32 @@ def RegisterEmployeeUser(request):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     else:
-        return Response({'message': 'invalid data', 'errors': serializer.errors},status=status.HTTP_400_BAD_REQUEST)
+        return Response({'message': 'invalid data', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+@authentication_classes([authentication.TokenAuthentication])
+@permission_classes([permissions.IsAuthenticated])
+def get_user_info(request):
+    user = request.user
+    user_type = request.query_params.get('user', None)
+    if user is None:
+        return Response({'message': 'bad request'}, status=status.HTTP_400_BAD_REQUEST)
+    if user_type == 'employee':
+        try:
+            user = Employee_user.objects.get(user=user)
+        except Employee_user.DoesNotExist:
+            return Response({'message': 'user does not exist'}, status=status.HTTP_404_NOT_FOUND)
+        serializer = EmployeeSerializer(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    else:
+        try:
+            user = Employer_user.objects.get(user=user)
+        except Employer_user.DoesNotExist:
+            return Response({'message': 'user does not exist'}, status=status.HTTP_404_NOT_FOUND)
+        serializer = EmployerSerializer(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 
 
 @api_view(['POST'])
@@ -227,3 +250,19 @@ def get_latest_user(request):
     user = User.objects.latest('date_joined')
     serializer = UserSerializer(user)
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+@authentication_classes([authentication.TokenAuthentication])
+@permission_classes([permissions.IsAuthenticated])
+def check_user(request):
+    user = request.user
+    try:
+        Employer_user.objects.get(user=user)
+    except Employer_user.DoesNotExist:
+        try:
+            Employee_user.objects.get(user=user)
+        except Employee_user.DoesNotExist:
+            return Response({'user': 'user not found'}, status=status.HTTP_404_NOT_FOUND)
+        return Response({'user': 'employee'}, status=status.HTTP_200_OK)
+    return Response({'user': 'employer'}, status=status.HTTP_200_OK)

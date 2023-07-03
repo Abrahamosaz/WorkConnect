@@ -9,6 +9,8 @@ import '../css/home.css';
 function Home() {
 
     const [posts, setPosts] = useState([]);
+    const [searchpost, setSearchPost] = useState('');
+    const [checkpost, setCheckpost] = useState('');
 
     const getPost = async (url) => {
         const token = localStorage.getItem('token');
@@ -21,7 +23,6 @@ function Home() {
                     }});
                 const data = await response.json();
                 if (response.status === 200) {
-                    console.log(data);
                     setPosts(data);
                 } else {
                     console.log(data.error);
@@ -40,6 +41,21 @@ function Home() {
 
     useEffect(() => {}, [posts]);
 
+    const handleSearch = async () => {
+        const  response = await fetch(`http://localhost:8000/api/post/?title=${searchpost}`, {
+            headers: {
+                Authorization: `Token ${localStorage.getItem('token')}`
+            }
+        });
+        const data = await response.json();
+        if (data.length > 0) {
+            setPosts(data);
+            setCheckpost(false);
+        } else {
+            setCheckpost(true);
+        }
+    };
+
     return (
     <React.Fragment>
         <div className="home-page">
@@ -47,7 +63,15 @@ function Home() {
                 <h1>WorkConnect App</h1>
                 <h2>Welcome to WorkConnect App</h2>
                 <br />
-                <Posts posts={posts} />
+                <div className='search-post'>
+                    <input
+                    type='text'
+                    name='search'
+                    value={searchpost}
+                    onChange={(e) => setSearchPost(e.target.value)}></input>
+                    <button onClick={handleSearch}>Search</button>
+                </div>
+                {!checkpost? <Posts posts={posts} /> : <h3>no post found</h3>}
             </section>
         </div>
     </React.Fragment>)

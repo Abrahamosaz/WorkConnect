@@ -26,6 +26,18 @@ function Navbar() {
         }
     }, [])
 
+    const handleProfileClick = async () => {
+        const response = await fetch('http://localhost:8000/api/check_user/', {
+            headers: { Authorization: `Token ${localStorage.getItem('token')}` }
+        });
+        const data = await response.json();
+        if (response.status === 200) {
+            (data.user === 'employee')? navigate('/profile_employee_page'): navigate('/profile_employer_page');
+        } else {
+            console.log(data);
+        }
+    };
+
     return (
         <React.Fragment>
         <nav className='nav'>
@@ -34,10 +46,14 @@ function Navbar() {
             </div>
             <div className='nav-bar-right'>
                 <ul>
-                    
+                    <li onClick={() => navigate('/')}>Home</li>
                     {
-                    isLoggedIn? 
-                    <li onClick={logout}><Link to='/'>Logout</Link></li>:
+                    isLoggedIn?
+                    <React.Fragment>
+                    <li onClick={logout}><Link to='/'>Logout</Link></li>
+                    <li onClick={handleProfileClick}>Profile</li>
+                    </React.Fragment>
+                    :
                     (
                         <React.Fragment>
                             <li><Link to='/auth/login'>Login</Link></li>

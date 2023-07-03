@@ -38,7 +38,6 @@ const UserLogin = () => {
             setIsError(false);
             setErrorMessage("");
             setIsLoggedIn(true);
-            console.log(isLoggedIn);
             navigate('/');
         } else {
             setIsError(true);

@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 function EmployeeSignUpDetails() {
 
     const navigate = useNavigate();
+
 
     const [employeedetails, setEmployeedetails] = useState({
         date_birth: '',
@@ -13,7 +14,10 @@ function EmployeeSignUpDetails() {
         phone_number: '',
         country: '',
         state: '',
-        profile_pic: ''
+        profile_pic: '',
+        about_me: '',
+        work_experience: '',
+        education: ''
     });
 
     const handleChange = (e) => {
@@ -29,18 +33,20 @@ function EmployeeSignUpDetails() {
     }
 
     const registerUser = async (url, data) => {
-        const body = {...employeedetails, user: data};
+        const form = new FormData();
+        form.append('user_id', data.id);
 
-        console.log(body);
+        for (const key in employeedetails) {
+            form.append(key, employeedetails[key]);
+        }
+
         const res = await fetch(url, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-        })
+            body: form
+        });
         const json_data = await res.json();
         console.log(json_data);
+        navigate('/login');
     };
 
     const handleForm =  async (e) => {
@@ -55,16 +61,10 @@ function EmployeeSignUpDetails() {
     };
 
     const handleFile = (e) => {
-        let fileObj = { ...employeedetails };
-        fileObj['profile_pic'] = e.target.files[0];
-        setEmployeedetails(fileObj);
+        const name = e.target.name;
+        const file = e.target.files[0];
+        setEmployeedetails({...employeedetails, [name]: file});
     };
-    // const [datebirth, setDatebirth] = useState('');
-    // const [location, setLocation] = useState('');
-    // const [skills, setSkills] = useState('');
-    // const [country, setCountry] = useState('');
-    // const [phonenumber, setPhonenumber] = useState('');
-    const [state, setState] = useState('');
 
   return (
     <div className="Sign-up-employee">
@@ -73,7 +73,7 @@ function EmployeeSignUpDetails() {
             <h3>fill the below details</h3>
             <br />
             <br />
-            <form onSubmit={handleForm}>
+            <form id='form' onSubmit={handleForm}>
                 <label htmlFor="date_birth">DateBirth:</label>
                     <input
                     type="date"
@@ -122,13 +122,36 @@ function EmployeeSignUpDetails() {
                     value={employeedetails.state}
                     onChange={handleChange}/>
                 <br />
+                <label htmlFor="education">Education:</label> 
+                    <input
+                    type="text"
+                    name="education"
+                    id="education"
+                    value={employeedetails.education}
+                    onChange={handleChange}/>
+                <br />
+                <label htmlFor="work_experience">Work experience:</label> 
+                    <input
+                    type="text"
+                    name="work_experience"
+                    id="work_experience"
+                    value={employeedetails.work_experience}
+                    onChange={handleChange}/>
+                <br />
+                <label htmlFor="aboutMe">About me:</label> 
+                    <input
+                    type="text"
+                    name="about_me"
+                    id="aboutMe"
+                    value={employeedetails.about_me}
+                    onChange={handleChange}/>
+                <br />
                 <label htmlFor="profile_pic">Profile Picture:</label>
                     <input
                     type="file"
                     name="profile_pic"
                     id="profile_pic"
                     accept="image/jpeg,image/png,image/gif"
-                    value={employeedetails.profile_pic}
                     onChange={handleFile}/>
                 <br />
                 <input type="submit" value="Next" />

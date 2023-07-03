@@ -26,15 +26,13 @@ class PostSerializer(serializers.ModelSerializer):
 
 
 class EmployerSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
 
     class Meta:
         model = Employer_user
-        exclude = ['profile_pic', 'date_birth']
+        exclude = ['date_birth']
         read_only_fields = ['user']
 
     def create(self, validated_data):
-        user = validated_data['user']
         employer_user = Employer_user.objects.create(**validated_data)
         return employer_user
 
@@ -49,7 +47,6 @@ class EmployeeSerializer(serializers.ModelSerializer):
         read_only_fields = ['user']
 
     def create(self, validated_data):
-        user = validated_data['user']
         employee_user = Employee_user.objects.create(**validated_data)
         return employee_user
 
