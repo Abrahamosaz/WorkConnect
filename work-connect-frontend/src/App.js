@@ -11,6 +11,7 @@ import EmployeeSignUpDetails from './pages/employee_signup_details';
 import EmployerSignUpDetails from './pages/employer_signup_details';
 import ProfileEmployeePage from './pages/profile_employee_page';
 import ProfileEmployerPage from './pages/profile_employer_page';
+import LandingPage from './pages/landing_page';
 
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
     <div>
     <Routes>
     <Route path='/' element={<Navbar />}>
-      <Route path='' element={<Home />} />
+      <Route path='' element={<LandingPage />} />
+      <Route path='home' element={<Home />} />
       <Route path='sign_up' element={<UserSignup />} />
       <Route path='login' element={<UserLogin />} />
       <Route path='sign_up_success' element={<SignupSuccess />} />

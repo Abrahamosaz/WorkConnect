@@ -2,6 +2,8 @@ import React from 'react';
 import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../contexts/user.contexts';
+import '../css/index.css';
+
 
 const UserLogin = () => {
     const [userdetails, setUserdetails] = useState({email: '', password: ''});
@@ -38,7 +40,7 @@ const UserLogin = () => {
             setIsError(false);
             setErrorMessage("");
             setIsLoggedIn(true);
-            navigate('/');
+            navigate('/home');
         } else {
             setIsError(true);
             setErrorMessage(data.message);
@@ -46,7 +48,7 @@ const UserLogin = () => {
     }
     return (
         <React.Fragment>
-        <div className="App App-header">
+        <div className="App container App-header">
             <h1>Welcome back</h1>
             <h3>Login to your WorkConnect Account</h3>
             <br />

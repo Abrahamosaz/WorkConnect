@@ -8,7 +8,6 @@ const Posts = ({ posts }) => {
   const postCount = posts.length;
 
   useEffect (() => {
-    console.log(userInfo);
   }, []);
 
   return (
@@ -20,10 +19,6 @@ const Posts = ({ posts }) => {
                     <h2>{post.title}</h2>
                     <p>{post.content}</p>
                     <b><small>author: {post.author.username}</small></b>
-                    <div style={{display: 'flex'}}>
-                    <a style={{border: '2px white solid', marginRight: '5px'}}>Edit</a>
-                    <a style={{border: '2px white solid'}}>Delete</a>
-                    </div>
                     <hr></hr>
                     <Comment props={post} />
                 </div>

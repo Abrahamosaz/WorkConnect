@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Posts from '../components/posts';
 /* css import */
 import '../css/home.css';
@@ -11,6 +11,9 @@ function Home() {
     const [posts, setPosts] = useState([]);
     const [searchpost, setSearchPost] = useState('');
     const [checkpost, setCheckpost] = useState('');
+
+    const buttonRef = useRef(null);
+    const inputRef = useRef(null);
 
     const getPost = async (url) => {
         const token = localStorage.getItem('token');
@@ -35,9 +38,16 @@ function Home() {
 
     useEffect (() => {
         const url = 'http://localhost:8000/api/post/';
+
+        inputRef.current.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                buttonRef.current.click();
+            }
+        });
+
         getPost(url);
 
-    }, [])
+    }, []);
 
     useEffect(() => {}, [posts]);
 
@@ -56,6 +66,7 @@ function Home() {
         }
     };
 
+
     return (
     <React.Fragment>
         <div className="home-page">
@@ -68,8 +79,8 @@ function Home() {
                     type='text'
                     name='search'
                     value={searchpost}
-                    onChange={(e) => setSearchPost(e.target.value)}></input>
-                    <button onClick={handleSearch}>Search</button>
+                    onChange={(e) => setSearchPost(e.target.value)} ref={inputRef}></input>
+                    <button onClick={handleSearch} ref={buttonRef}>Search</button>
                 </div>
                 {!checkpost? <Posts posts={posts} /> : <h3>no post found</h3>}
             </section>
