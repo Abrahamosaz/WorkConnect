@@ -3,12 +3,13 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import '../css/index.css';
 import '../css/home.css';
+import '../../public/';
 
 const LandingPage = () => {
 
   const currentMonth = '';
   const date = '';
-  
+
   return (
     <React.Fragment>
         <div className="container-fluid px-0">
@@ -46,7 +47,7 @@ const LandingPage = () => {
                     <button className='btn btn-lg btn-primary my-btn'>Hire developers</button>
                     </div>
                     <div className='col'>
-                        <img src="" alt="" />
+                        <img src="pexel-1.jpg" alt="" />
                     </div>
                 </div>
                 <div className='bgg-padding-y row light-grey'>
