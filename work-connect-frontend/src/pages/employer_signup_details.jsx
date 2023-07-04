@@ -43,7 +43,7 @@ function EmployerSignUpDetails() {
         });
         const json_data = await res.json();
         console.log(json_data);
-        navigate('/login');
+        navigate('/home');
     };
 
     const handleForm =  async (e) => {

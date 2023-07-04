@@ -31,6 +31,10 @@ body {
     padding: 0 5rem;
 }
 
+.bgg-padding-x {
+    padding: 0 10rem;
+}
+
 .bgg-padding-y {
     padding: 10rem 0;
 }

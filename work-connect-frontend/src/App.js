@@ -22,17 +22,11 @@ function App() {
     <div>
     <Routes>
     <Route path='/' element={<Navbar />}>
-<<<<<<< HEAD
-      <Route path='' element={<Home />} />
-      <Route path='auth/sign_up' element={<UserSignup />} />
-      <Route path='auth/login' element={<UserLogin />} />
-=======
       <Route path='' element={<LandingPage />} />
       <Route path='home' element={<Home />} />
       <Route path='sign_up' element={<UserSignup />} />
       <Route path='comment-page' element={<CommentPage />} />
       <Route path='login' element={<UserLogin />} />
->>>>>>> a05e4423266ddec7fc590aa1c151cb0ae0483c1f
       <Route path='sign_up_success' element={<SignupSuccess />} />
       <Route path='jobs' element={<Jobs />} />
       <Route path='create-jobs' element={<CreateJobs />} />

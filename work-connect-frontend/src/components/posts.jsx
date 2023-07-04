@@ -8,12 +8,9 @@ const Posts = ({ posts }) => {
 
   const postCount = posts.length;
 
-<<<<<<< HEAD
-=======
   useEffect (() => {
   }, []);
 
->>>>>>> a05e4423266ddec7fc590aa1c151cb0ae0483c1f
   return (
     <React.Fragment>
     {postCount > 0?

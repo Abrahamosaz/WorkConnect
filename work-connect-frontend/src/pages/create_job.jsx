@@ -4,9 +4,9 @@ import '../css/index.css';
 
 const CreateJobs = () => {
 
-  useEffect(() => {
-    getJobForm('http://')
-  });
+  // useEffect(() => {
+  //   getJobForm('http://')
+  // });
 
   return (
     <div className='container'>
