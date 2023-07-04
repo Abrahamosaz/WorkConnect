@@ -14,3 +14,43 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+.bg-margin-y {
+    margin: 5rem 0;
+}
+
+.bgg-margin-y {
+    margin: 10rem 0;
+}
+
+.bg-padding-y {
+    padding: 5rem 0;
+}
+
+.bg-padding-x {
+    padding: 0 5rem;
+}
+
+.bgg-padding-y {
+    padding: 10rem 0;
+}
+
+.bgg-padding {
+    padding: 10rem;
+}
+
+.bg-padding {
+    padding: 5rem;
+}
+
+.light-grey {
+    background-color: rgb(228, 222, 222);
+}
+
+.mild-dark {
+    background-color: rgb(41, 37, 37);
+}
+
+.my-btn {
+    padding: 10px 20px;
+}

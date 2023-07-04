@@ -46,18 +46,19 @@ function Navbar() {
             </div>
             <div className='nav-bar-right'>
                 <ul>
-                    <li onClick={() => navigate('/')}>Home</li>
+                    <li onClick={() => navigate('/')} className="btn">Apply for jobs</li>
+                    <li onClick={() => navigate('/')} className="btn">Hire Developers</li>
                     {
                     isLoggedIn?
                     <React.Fragment>
-                    <li onClick={logout}><Link to='/'>Logout</Link></li>
-                    <li onClick={handleProfileClick}>Profile</li>
+                        <li onClick={handleProfileClick} className="btn">Profile</li>
+                        <li onClick={logout} className="btn"><Link to='/'>Logout</Link></li>
                     </React.Fragment>
                     :
                     (
                         <React.Fragment>
-                            <li><Link to='/auth/login'>Login</Link></li>
-                            <li><Link to='/auth/sign_up'>Sign up</Link></li>
+                            <li><Link to='/auth/sign_up' className="btn">Sign up</Link></li>
+                            <li><Link to='/auth/login' className="btn">Login</Link></li>
                         </React.Fragment>
                     )
                     }
