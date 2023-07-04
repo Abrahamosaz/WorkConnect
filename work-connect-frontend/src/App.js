@@ -12,6 +12,9 @@ import EmployerSignUpDetails from './pages/employer_signup_details';
 import ProfileEmployeePage from './pages/profile_employee_page';
 import ProfileEmployerPage from './pages/profile_employer_page';
 import LandingPage from './pages/landing_page';
+import CommentPage from './pages/comment_page';
+import Jobs from './pages/jobs';
+import CreateJobs from './pages/create_job';
 
 
 function App() {
@@ -22,8 +25,11 @@ function App() {
       <Route path='' element={<LandingPage />} />
       <Route path='home' element={<Home />} />
       <Route path='sign_up' element={<UserSignup />} />
+      <Route path='comment-page' element={<CommentPage />} />
       <Route path='login' element={<UserLogin />} />
       <Route path='sign_up_success' element={<SignupSuccess />} />
+      <Route path='jobs' element={<Jobs />} />
+      <Route path='create-jobs' element={<CreateJobs />} />
       <Route path='employee_signup_details' element={<EmployeeSignUpDetails />} />
       <Route path='employer_signup_details' element={<EmployerSignUpDetails />} />
       <Route path='profile_employee_page' element={<ProfileEmployeePage />} />

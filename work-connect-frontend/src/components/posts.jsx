@@ -5,6 +5,7 @@ import { UserContext } from '../contexts/user.contexts';
 
 
 const Posts = ({ posts }) => {
+
   const postCount = posts.length;
 
   useEffect (() => {

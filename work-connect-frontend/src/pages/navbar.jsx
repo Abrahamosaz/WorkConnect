@@ -49,6 +49,7 @@ function Navbar() {
                     {
                     isLoggedIn?
                     <React.Fragment>
+                    <li onClick={() => navigate('/jobs')}>All Jobs</li>
                     <li onClick={() => navigate('/home')}>Home</li>
                     <li onClick={logout}><Link to='/'>Logout</Link></li>
                     <li onClick={handleProfileClick}>Profile</li>
