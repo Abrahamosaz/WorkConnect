@@ -5,8 +5,15 @@ import { UserContext } from '../contexts/user.contexts';
 
 
 const Posts = ({ posts }) => {
+
   const postCount = posts.length;
 
+<<<<<<< HEAD
+=======
+  useEffect (() => {
+  }, []);
+
+>>>>>>> a05e4423266ddec7fc590aa1c151cb0ae0483c1f
   return (
     <React.Fragment>
     {postCount > 0?
@@ -16,10 +23,6 @@ const Posts = ({ posts }) => {
                     <h2>{post.title}</h2>
                     <p>{post.content}</p>
                     <b><small>author: {post.author.username}</small></b>
-                    <div style={{display: 'flex'}}>
-                    <a style={{border: '2px white solid', marginRight: '5px'}}>Edit</a>
-                    <a style={{border: '2px white solid'}}>Delete</a>
-                    </div>
                     <hr></hr>
                     <Comment props={post} />
                 </div>

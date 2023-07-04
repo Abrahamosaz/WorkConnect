@@ -9,6 +9,9 @@ def upload_employee_file (instance, filename):
 def upload_employer_file (instance, filename):
     return '/'.join(['employer_user', str(instance.user.username), filename])
 
+def upload_app_file(instance, filename):
+    return '/'.join(['resume', str(instance.user.username), filename])
+
 class Employee_user(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     date_birth = models.DateField(blank=False, null=False)
@@ -64,7 +67,7 @@ class Comment(models.Model):
 class Job(models.Model):
     employer_user = models.ForeignKey(Employer_user, on_delete=models.CASCADE, related_name='jobs')
     position = models.CharField(max_length=100)
-    skills = models.TextField()
+    skills_required = models.TextField()
     location = models.CharField(max_length=100)
     job_description = models.TextField()
 
@@ -77,7 +80,7 @@ class Application_form(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     skills = models.TextField()
-    resume = models.FileField(blank=True, null=True)
+    resume = models.FileField(upload_to=upload_app_file, blank=True, null=True)
     cover_letter = models.TextField()
 
     def __str__(self):
