@@ -14,16 +14,7 @@ function Home() {
     const [checkpost, setCheckpost] = useState('');
 
     const {isLoggedIn } = useContext(UserContext);
-    const [ displayLandingPage, setDisplayLandingPage ] = useState(false);
-
-    useEffect(() => {
-        if (isLoggedIn) {
-            setDisplayLandingPage(false);
-        } else {
-            setDisplayLandingPage(true);
-        }
-    })
-
+    
     const getPost = async (url) => {
         const token = localStorage.getItem('token');
         if (token)

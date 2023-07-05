@@ -6,9 +6,9 @@ import '../css/home.css';
 // import '../utils/images/';
 
 const LandingPage = () => {
-
-  const currentMonth = '';
-  const date = '';
+  const date_ = new Date();
+  const date = date_.getFullYear();
+  const currentMonth = date_.getMonth();
 
   return (
     <React.Fragment>
@@ -77,25 +77,25 @@ const LandingPage = () => {
                         <div className='col'>
                             <div>
                                 <span></span>
-                                <h3>Speed</h3>
+                                <h3 className='text-success'>Speed</h3>
                             </div>
-                            <h1>4 days</h1>
+                            <h1 className='text-success'>4 days</h1>
                             <p>to fill most roles, sometimes same day</p>
                         </div>
                         <div className='col'>
                             <div>
                                 <span></span>
-                                <h3>Time saved</h3>
+                                <h3 className='text-success'>Time saved</h3>
                             </div>
-                            <h1>50+ hours</h1>
+                            <h1 className='text-success'>50+ hours</h1>
                             <p>of engineering team time saved per developer for interviewing</p>
                         </div>
                         <div className='col'>
                             <div>
                                 <span></span>
-                                <h3>Retention</h3>
+                                <h3 className='text-success'>Retention</h3>
                             </div>
-                            <h1>97%</h1>
+                            <h1 className='text-success'>97%</h1>
                             <p>engagement success rate</p>
                         </div>
                     </div>
@@ -122,11 +122,11 @@ const LandingPage = () => {
                         <button className="btn btn-lg btn-outline-white">Apply for jobs</button>
                     </div>
                     </div>
-                    <div className='col'>
+                    <div className='col rounded-circle'>
                         <img src="https://images.pexels.com/photos/6930549/pexels-photo-6930549.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
                     </div>
                 </div>
-                <div  className='row my-5 bg-padding'>
+                <div  className='row my-5 bg-padding gx-5'>
                     <div className='col'><img src="https://images.pexels.com/photos/3153201/pexels-photo-3153201.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" /></div>
                     <div className='col'>
                         <h2>Why are the best developers joining WorkConnect?
@@ -198,8 +198,8 @@ const LandingPage = () => {
                     <h3>Tell us the skills you need and we will find the best developer for you</h3>
                     <button className="btn btn-lg btn-primary">Hire developers</button>
                 </div>
-                <footer className='p-5 text-bg-dark'>
-                    <div className='row me-3 gx-4'>
+                <footer className='bg-padding-x py-5 text-bg-dark'>
+                    <div className='row me-3 gx-4 mb-4'>
                         <div className='col'>
                             <h2><Link to='/'>WorkConnect</Link></h2>
                         </div>
@@ -242,17 +242,18 @@ const LandingPage = () => {
                             </ul>
                         </div>
                     </div>
-                    <div className='row'>
+                    <div className='row mt-5'>
                         <div className='col'>
-                        <div className=''>
-                            <span>Facebook icon</span>
-                            <span>Twitter icon</span>
-                            <span>YouTube icon</span>
-                            <span>Instagram icon</span>
+                        <div className='row'>
+                            <span className='col'>F icon</span>
+                            <span className='col'>T icon</span>
+                            <span className='col'>Y icon</span>
+                            <span className='col'>I icon</span>
                         </div>
                         <p>Copyright {date} WorkConnect</p>
                         <small>6, Lekki phase 1, Lagos state, Nigeria.</small>
                         </div>
+                        <div className="col"></div>
                         <div className='col display-flex'>
 
                             <p className="col">Site Map</p>
