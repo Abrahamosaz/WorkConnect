@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import '../css/index.css';
 import '../css/home.css';
-import '../../public/';
+// import '../utils/images/';
 
 const LandingPage = () => {
 
@@ -14,32 +14,31 @@ const LandingPage = () => {
     <React.Fragment>
         <div className="container-fluid px-0">
             
-                <div className='row my-5 bg-padding-x'>
+                <div className='row my-5 bg-padding-x' style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
                 <div className='col'>
-                    <h1>Your one stop hub for the most vetted talents</h1>
-                    <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                    <h1 className="front-heading">Your one stop hub for the most vetted talents</h1>
+                    <p className="front-p">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
                     Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-                    Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum  Lorem ipsum Lorem ipsum Lorem ipsum
                     </p>
                     <button type='button' className="btn btn-lg btn-primary me-3">Hire Developers</button>
                     <button type='button' className="btn btn-lg btn-outline-primary">Explore Services</button>
                 </div>
-                <div className='col'><img src="..\" alt="" /></div>
+                <div className='col'><img src="https://images.pexels.com/photos/3862372/pexels-photo-3862372.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" /></div>
                 <p className="mt-2">Looking for jobs instead? <Link to=''>Apply for jobs</Link></p>
                 </div>
-                <div className='text-center my-5 bg-padding-y light-grey'>
+                <div className='text-center my-5 bgg-padding-y light-grey'>
                     <h2>Traditional recruiting is over. Welcome to the Talent Cloud</h2>
                     <p>Join hundreds of individuals and companies that trust WorkConnect</p>
                     <div className="row">
-                        <span className='col'>C</span>
-                        <span className='col'>D</span>
-                        <span className='col'>E</span>
-                        <span className='col'>F</span>
+                        <i className="bi bi-alipay col"></i>
+                        <i className="bi bi-android2 col"></i>
+                        <i className="bi bi-apple col"></i>
+                        <i className="bi bi-android col"></i>
                     </div>
                 </div>
-                <div className='my-5 bg-padding row'>
+                <div className='my-5 bg-padding row display-flex'>
                     <div className='col'>
-                    <h3 className='fs-5'>COMPANIES</h3>
+                    <h3 className='small-heading'>COMPANIES</h3>
                     <h2>Hire deeply vetted software developers</h2>
                     <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
                     Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
@@ -47,13 +46,13 @@ const LandingPage = () => {
                     <button className='btn btn-lg btn-primary my-btn'>Hire developers</button>
                     </div>
                     <div className='col'>
-                        <img src="pexel-1.jpg" alt="" />
+                        <img src="https://images.pexels.com/photos/7688454/pexels-photo-7688454.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
                     </div>
                 </div>
-                <div className='bgg-padding-y row light-grey'>
-                    <div className="col"><img src="" alt="" /></div>
+                <div className='bg-padding row display-flex light-grey'>
+                    <div className="col"><img src="https://images.pexels.com/photos/5899079/pexels-photo-5899079.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" className='img-addrr' /></div>
                     <div className="col">
-                        <h3>COMPANIES</h3>
+                        <h3 className='small-heading'>COMPANIES</h3>
                         <h2>Get fully managed services</h2>
                         <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
                         Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
@@ -61,19 +60,19 @@ const LandingPage = () => {
                         <button className="btn btn-lg btn-primary">More about Services</button>
                     </div>
                 </div>
-                <div className='bg-padding row'>
+                <div className='bg-padding row display-flex'>
                     <div className='col'>
-                        <h3>DEVELOPERS</h3>
+                        <h3 className='small-heading'>DEVELOPERS</h3>
                         <h2>Apply for jobs</h2>
                         <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
                         Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
                         </p>
                         <button className="btn btn-lg btn-primary">Apply for jobs</button>
                     </div>
-                    <div className='col'><img src="" alt="" /></div>
+                    <div className='col'><img src="https://images.pexels.com/photos/7688460/pexels-photo-7688460.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" /></div>
                 </div>
-                <div className='py-5 text-center'>
-                    <h2>Why businesses choose WorkConnect</h2>
+                <div className='bgg-padding-y text-center light-grey'>
+                    <h2 className='mb-5'>Why businesses choose WorkConnect</h2>
                     <div className='row'>
                         <div className='col'>
                             <div>
@@ -118,17 +117,17 @@ const LandingPage = () => {
                             <p>Seniority levels</p>
                         </div>
                     </div>
-                    <div>
+                    <div className='gx-5'>
                         <button className="btn btn-lg btn-light text-primary">Hire developers</button>
                         <button className="btn btn-lg btn-outline-white">Apply for jobs</button>
                     </div>
                     </div>
                     <div className='col'>
-                        <img src="" alt="" />
+                        <img src="https://images.pexels.com/photos/6930549/pexels-photo-6930549.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
                     </div>
                 </div>
-                <div  className='row my-5 p-5'>
-                    <div className='col'><img src="" alt="" /></div>
+                <div  className='row my-5 bg-padding'>
+                    <div className='col'><img src="https://images.pexels.com/photos/3153201/pexels-photo-3153201.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" /></div>
                     <div className='col'>
                         <h2>Why are the best developers joining WorkConnect?
                             Because they want careers, not gigs.
@@ -141,40 +140,44 @@ const LandingPage = () => {
                         <button className="btn btn-lg btn-primary">Apply for jobs</button>
                     </div>
                 </div>
-                <div className='my-5 p-5'>
+                {/* <div className='my-5 bg-padding light-grey'>
                     <h2>People love WorkConnect</h2>
                     <p>See what people have to say about us</p>
                     <div>
-
+                    <img src="https://media.istockphoto.com/id/1173324914/photo/attractive-hands-showing-five-stars-rating-on-a-smart-phone.jpg?b=1&s=612x612&w=0&k=20&c=YJgNlqhroXvtm51G59vUApdjt8zboVY0yF_n_jJegfs=" className="d-block w-25 h-auto" alt="..." />
                     </div>
                     <h2>4.7 star out of 5</h2>
                     <p>Based on developers reviews as of {currentMonth} 2023</p>
-                </div>
-                <div className='my-5 p-5'>
-                    <div id="carouselExampleDark" class="carousel carousel-dark slide">
-                        <div class="carousel-indicators">
+                </div> */}
+                <hr className='hr' />
+                <div className='my-5 bg-padding text-center'>
+                    <h1>People love WorkConnect</h1>
+                    <h3>See what people have to say about us</h3>
+                    <div id="carouselExampleDark" className="carousel carousel-dark slide mt-5">
+                        <div className="carousel-indicators">
                             <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                             <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
                             <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
                         </div>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active" data-bs-interval="10000">
-                            <img src="..." class="d-block w-100" alt="..." />
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>First slide label</h5>
-                                <p>Some representative placeholder content for the first slide.</p>
+                        <div className="carousel-inner">
+                            <div className="carousel-item active" data-bs-interval="10000">
+                            <img src="https://media.istockphoto.com/id/1173324914/photo/attractive-hands-showing-five-stars-rating-on-a-smart-phone.jpg?b=1&s=612x612&w=0&k=20&c=YJgNlqhroXvtm51G59vUApdjt8zboVY0yF_n_jJegfs=" className="d-block w-100 h-auto" alt="..." />
+                            <div className="carousel-caption d-none d-md-block">
+                                <h3>Vladok Hriodik</h3>
+                                <h6>Head of Operations, Dot Codes Inc.</h6>
+                                <i>I hired 50% of my staff base through WorkConnect. I am happy I used WorkConnect.</i>
                             </div>
                             </div>
-                            <div class="carousel-item" data-bs-interval="2000">
-                            <img src="..." class="d-block w-100" alt="..." />
-                            <div class="carousel-caption d-none d-md-block">
+                            <div className="carousel-item" data-bs-interval="2000">
+                            <img src="https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=600" className="d-block w-100 h-auto" alt="..." />
+                            <div className="carousel-caption d-none d-md-block">
                                 <h5>Second slide label</h5>
                                 <p>Some representative placeholder content for the second slide.</p>
                             </div>
                             </div>
-                            <div class="carousel-item">
-                            <img src="..." class="d-block w-100" alt="..." />
-                            <div class="carousel-caption d-none d-md-block">
+                            <div className="carousel-item">
+                            <img src="..." className="d-block w-100" alt="..." />
+                            <div className="carousel-caption d-none d-md-block">
                                 <h5>Third slide label</h5>
                                 <p>Some representative placeholder content for the third slide.</p>
                             </div>
@@ -250,10 +253,11 @@ const LandingPage = () => {
                         <p>Copyright {date} WorkConnect</p>
                         <small>6, Lekki phase 1, Lagos state, Nigeria.</small>
                         </div>
-                        <div className='col'>
-                            <p>Site Map</p>
-                            <p>Terms of Service</p>
-                            <p>Privacy Policy</p>
+                        <div className='col display-flex'>
+
+                            <p className="col">Site Map</p>
+                            <p className="col">Terms of Service</p>
+                            <p className="col">Privacy Policy</p>
                         </div>
                     </div>
                 </footer>
