@@ -23,3 +23,8 @@ div.nav-bar-right li {
 .logo {
     font-size: 5rem;
 }
+
+.nav-bar-padding {
+    padding-left: 5rem;
+    padding-right: 5rem;
+}

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { useState, createContext } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../css/user_signup.css';
 import { UserContext } from '../contexts/user.contexts';
 
@@ -76,16 +76,18 @@ function UserSignup() {
 
     return (
         <React.Fragment>
-        <div className="sign-up">
+        <div className="py-5 bg-padding-x">
             <h1>Create an Account</h1>
             <h3>Set up your WorkConnect App in seconds</h3>
             <small>We only need a few details</small>
             <br />
             <h3>{isError && error}</h3>
-            <form className='sign-up-form' onSubmit={handleSubmit}>
-                <div>
-                <label htmlFor="name">UserName:</label>
+            <form className='_sign-up-form' onSubmit={handleSubmit}>
+            <div className="row mb-3">
+                <label htmlFor="name">UserName: 
+                <div className="col-sm-10">
                     <input
+                    className='form-control'
                     type="text"
                     name="username"
                     id="name"
@@ -93,9 +95,14 @@ function UserSignup() {
                     onChange={handleChange}
                     required />
                 </div>
-                <div>
-                <label htmlFor="firstname">FirstName:</label>
+                </label>
+            </div>
+                
+                <div className="row mb-3">
+                    <label htmlFor="firstname">FirstName: 
+                <div className="col-sm-10">
                     <input
+                    className='form-control'
                     type="text"
                     name="firstname"
                     id="email"
@@ -103,9 +110,14 @@ function UserSignup() {
                     onChange={handleChange}
                     required />
                 </div>
-                <div>
-                <label htmlFor="last_name">LastName:</label>
+                </label>
+                </div>
+
+                <div className="row mb-3">
+                    <label htmlFor="last_name">LastName: 
+                <div className="col-sm-10">
                     <input
+                    className='form-control'
                     type="text"
                     name="lastname"
                     id="last_name"
@@ -113,9 +125,14 @@ function UserSignup() {
                     onChange={handleChange}
                     required />
                 </div>
-                <div>
-                <label htmlFor="email">Email:</label>
+                </label>
+                </div>
+
+                <div className="row mb-3">
+                    <label htmlFor="email">Email: 
+                <div className="col-sm-10">
                     <input
+                    className='form-control'
                     type="email"
                     name="email"
                     id="email"
@@ -123,9 +140,14 @@ function UserSignup() {
                     onChange={handleChange}
                     required />
                 </div>
-                <div>
-                <label htmlFor="pass">Password:</label>
+                </label>
+                </div>
+                
+                <div className="row mb-3">
+                    <label htmlFor="pass">Password: 
+                <div className="col-sm-10">
                 <input 
+                className='form-control'
                 type="password"
                 name="password"
                 id="pass"
@@ -133,24 +155,32 @@ function UserSignup() {
                 onChange={handleChange}
                 required />
                 </div>
-                <div>
-                <label htmlFor="pass_confirm">Confirm Password:</label>
+                </label>
+                </div>
+
+                <div className="row mb-3">
+                    <label htmlFor="pass_confirm">Confirm Password: 
+                <div className="col-sm-10">
                     <input
                     type="password"
+                    className='form-control'
                     name="confirmpassword"
                     id="pass_confirm"
                     value={userInfo.confirmpassword}
                     onChange={handleChange}
                     required />
                 </div>
-                <div>
-                <input type="submit" value="Sign Up" />
+                </label>
                 </div>
+                <br />
+                
+                <input type="submit"  className='btn btn-primary' value="Sign Up" />
             </form>
             <br />
 
-            <p>Already signed up?</p>
-            <Link to='/auth/login'>Login</Link>
+            <p>Already signed up?
+            <Link to='/login' className='link-primary ms-2'>Login</Link>
+            </p>
         </div>
         </React.Fragment>
     );

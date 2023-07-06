@@ -43,7 +43,7 @@ function EmployerSignUpDetails() {
         });
         const json_data = await res.json();
         console.log(json_data);
-        navigate('/home');
+        navigate('//sign_up_success');
     };
 
     const handleForm =  async (e) => {
@@ -64,78 +64,126 @@ function EmployerSignUpDetails() {
     };
 
   return (
-    <div className="Sign-up-employee">
+    <div className="py-5 bg-padding-x">
             <h1>Create an Account</h1>
             <h3>Set up your WorkConnect Job Seeker Account in seconds</h3>
-            <h3>fill the below details</h3>
+            <h4>Fill the below details</h4>
             <br />
             <br />
             <form id='form' onSubmit={handleForm}>
-                <label htmlFor="date_birth">DateBirth:</label>
-                    <input
+            <div className="row mb-3">
+                <label htmlFor="date_birth">DateBirth: 
+                <div className="col-sm-10">
+                    <input 
+                    className='form-control'
                     type="date"
                     name="date_birth"
                     id="date_birth"
                     value={employerdetails.date_birth}
                     onChange={handleChange} />
-                <br />
-                <label htmlFor="location">Location:</label>
-                    <input
+                </div>
+                </label>
+                </div>
+
+                <div className="row mb-3">
+                <label htmlFor="location">Location: 
+                <div className="col-sm-10">
+                    <input 
+                    className='form-control'
                     type="text"
                     name="location"
                     id="location"
                     value={employerdetails.location}
                     onChange={handleChange} />
-                <br />
-                <label htmlFor="companyname">Company Name:</label> 
-                    <input
+                </div>
+                </label>
+                </div>
+
+                <div className="row mb-3">
+                <label htmlFor="companyName">Company name: 
+                <div className="col-sm-10">
+                    <input 
+                    className='form-control'
                     type="text"
                     name="company_name"
-                    id="companyname"
+                    id="skills"
                     value={employerdetails.skill}
                     onChange={handleChange} />
-                <br />
-                <label htmlFor="phone_number">Phone Number:</label>
-                    <input
-                    type="text"
+                </div> 
+                </label>
+                </div>
+                
+                <div className="row mb-3">
+                <label htmlFor="phone_number">Phone Number: 
+                <div className="col-sm-10">
+                    <input 
+                    className='form-control'
+                    type="tel"
                     name="phone_number"
                     id="phone_number"
                     value={employerdetails.phone_number}
                     onChange={handleChange} />
-                <br />
-                <label htmlFor="country">Country:</label>
-                    <input
+                </div>
+                </label>
+                </div>
+
+                <div className="row mb-3">
+                <label htmlFor="country">Country: 
+                <div className="col-sm-10">
+                    <input 
+                    className='form-control'
                     type="text"
                     name="country"
                     id="country"
                     value={employerdetails.country}
                     onChange={handleChange}/>
-                <br />
-                <label htmlFor="state">State:</label> 
-                    <input
+                </div>
+                </label>
+                </div>
+                
+                <div className="row mb-3">
+                <label htmlFor="state">State: 
+                <div className="col-sm-10">
+                    <input 
+                    className='form-control'
                     type="text"
                     name="state"
                     id="State"
                     value={employerdetails.state}
                     onChange={handleChange}/>
-                <br />
-                <label htmlFor="about_company">About company:</label> 
-                    <input
+                </div>
+                </label> 
+                </div>
+
+                <div className="row mb-3">
+                <label htmlFor="aboutMe">About me: 
+                <div className="col-sm-10">
+                    <input 
+                    className='form-control'
                     type="text"
-                    name="about_company"
-                    id="about_company"
-                    value={employerdetails.about_company}
+                    name="about_me"
+                    id="aboutMe"
+                    value={employerdetails.about_me}
                     onChange={handleChange}/>
-                <br />
-                <label htmlFor="profile_pic">Profile Picture:</label>
-                    <input
+                </div>
+                </label>
+                </div>
+                
+                <div className="row mb-3">
+                    <label htmlFor="profile_pic">Profile Picture: 
+                <div className="col-sm-10">
+                    <input 
+                    className='form-control'
                     type="file"
                     name="profile_pic"
                     id="profile_pic"
                     accept="image/jpeg,image/png,image/gif"
                     onChange={handleFile}/>
+                </div>
+                </label>
+                </div>
                 <br />
-                <input type="submit" value="Next" />
+                <input type="submit" className='btn btn-primary' value="Finish" />
             </form>
         </div>)
   }

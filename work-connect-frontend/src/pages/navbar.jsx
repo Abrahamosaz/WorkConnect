@@ -44,9 +44,9 @@ function Navbar() {
 
     return (
         <React.Fragment>
-            <nav className="navbar navbar-expand-lg bg-dark border-bottom border-bottom-dark ms-0" data-bs-theme="dark">
-                    <div className="container-fluid bg-padding-x">
-                    <h1 className="text-primary"><Link to='/' className='navbar-brand me-auto'>WorkConnect</Link></h1>
+            <nav className="navbar navbar-expand-lg px-5 bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+                    <div className="container-fluid">
+                    <h1 className=""><Link to='/' className='navbar-brand me-auto fs-2'>WorkConnect</Link></h1>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                     </button>

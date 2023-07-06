@@ -13,7 +13,7 @@ function Home() {
     const [searchpost, setSearchPost] = useState('');
     const [checkpost, setCheckpost] = useState('');
 
-    const {isLoggedIn } = useContext(UserContext);
+    // const {isLoggedIn } = useContext(UserContext);
     
     const getPost = async (url) => {
         const token = localStorage.getItem('token');
@@ -44,7 +44,8 @@ function Home() {
 
     useEffect(() => {}, [posts]);
 
-    const handleSearch = async () => {
+    const handleSearch = async (e) => {
+        e.preventDefault();
         const  response = await fetch(`http://localhost:8000/api/post/?title=${searchpost}`, {
             headers: {
                 Authorization: `Token ${localStorage.getItem('token')}`
@@ -59,14 +60,19 @@ function Home() {
         }
     };
     return (
-            <section className="App-header">
-                <div className='search-post'>
-                    <input
-                    type='text'
-                    name='search'
-                    value={searchpost}
-                    onChange={(e) => setSearchPost(e.target.value)}></input>
-                    <button onClick={handleSearch}>Search</button>
+            <section className="py-5 bg-padding-x">
+                <div className="text-center my-3">
+                <form class="d-flex" role="search">
+                    <input 
+                    class="form-control me-2" 
+                    type="search" 
+                    name='search' 
+                    value={searchpost} 
+                    onChange={(e) => setSearchPost(e.target.value)} 
+                    placeholder="Search Posts" 
+                    aria-label="Search" />
+                    <button class="btn btn-outline-success" onClick={handleSearch}>Search</button>
+                </form>
                 </div>
                 {!checkpost? <Posts posts={posts} /> : <h3>no post found</h3>}
             </section>

@@ -16,35 +16,35 @@ body {
 }
 
 .bg-margin-y {
-    margin: 5rem 0;
+    margin: 4rem 0;
 }
 
 .bgg-margin-y {
-    margin: 10rem 0;
+    margin: 8rem 0;
 }
 
 .bg-padding-y {
-    padding: 5rem 0;
+    padding: 4rem 0;
 }
 
 .bg-padding-x {
-    padding: 0 5rem;
+    padding: 0 4rem;
 }
 
 .bgg-padding-x {
-    padding: 0 10rem;
+    padding: 0 8rem;
 }
 
 .bgg-padding-y {
-    padding: 10rem 0;
+    padding: 8rem 0;
 }
 
 .bgg-padding {
-    padding: 10rem;
+    padding: 8rem;
 }
 
 .bg-padding {
-    padding: 5rem;
+    padding: 4rem;
 }
 
 .light-grey {
@@ -90,4 +90,20 @@ p.front-p {
     border-top-width: 3px;
     border-radius: 50%;
     margin: 0 auto;
+}
+
+.c-width {
+    width: 150px;
+}
+
+.success-light {
+    color: rgb(27, 201, 27);
+}
+
+.primary-light {
+    color: rgb(78, 78, 216);
+}
+
+.smaller-heading {
+    font-size: 1.8rem;
 }

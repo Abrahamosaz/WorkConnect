@@ -8,7 +8,7 @@ import '../css/home.css';
 const LandingPage = () => {
   const date_ = new Date();
   const date = date_.getFullYear();
-  const currentMonth = date_.getMonth();
+//   const currentMonth = date_.getMonth();
 
   return (
     <React.Fragment>
@@ -29,14 +29,14 @@ const LandingPage = () => {
                 <div className='text-center my-5 bgg-padding-y light-grey'>
                     <h2>Traditional recruiting is over. Welcome to the Talent Cloud</h2>
                     <p>Join hundreds of individuals and companies that trust WorkConnect</p>
-                    <div className="row">
-                        <i className="bi bi-alipay col"></i>
-                        <i className="bi bi-android2 col"></i>
-                        <i className="bi bi-apple col"></i>
-                        <i className="bi bi-android col"></i>
+                    <div className="gx-5">
+                            <span className='fs-3 fst-italic fw-thin me-4'>Facebook</span>
+                            <span className='fs-3 fst-italic fw-thin me-4'>Apple</span>
+                            <span className='fs-3 fst-italic fw-thin me-4'>Google</span>
+                            <span className='fs-3 fst-italic fw-thin'>Microsoft</span>
                     </div>
                 </div>
-                <div className='my-5 bg-padding row display-flex'>
+                <div className='my-5 bg-padding row display-flex gx-5'>
                     <div className='col'>
                     <h3 className='small-heading'>COMPANIES</h3>
                     <h2>Hire deeply vetted software developers</h2>
@@ -49,7 +49,7 @@ const LandingPage = () => {
                         <img src="https://images.pexels.com/photos/7688454/pexels-photo-7688454.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
                     </div>
                 </div>
-                <div className='bg-padding row display-flex light-grey'>
+                <div className='bg-padding row display-flex light-grey gx-5'>
                     <div className="col"><img src="https://images.pexels.com/photos/5899079/pexels-photo-5899079.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" className='img-addrr' /></div>
                     <div className="col">
                         <h3 className='small-heading'>COMPANIES</h3>
@@ -71,32 +71,32 @@ const LandingPage = () => {
                     </div>
                     <div className='col'><img src="https://images.pexels.com/photos/7688460/pexels-photo-7688460.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" /></div>
                 </div>
-                <div className='bgg-padding-y text-center light-grey'>
+                <div className='bgg-padding text-center light-grey'>
                     <h2 className='mb-5'>Why businesses choose WorkConnect</h2>
                     <div className='row'>
                         <div className='col'>
                             <div>
-                                <span></span>
-                                <h3 className='text-success'>Speed</h3>
+                                <span className='success-light bi-battery-charging fs-3'></span>
+                                <h3 className='d-inline ms-2'>Speed</h3>
                             </div>
-                            <h1 className='text-success'>4 days</h1>
-                            <p>to fill most roles, sometimes same day</p>
+                            <h1 className='success-light'>4 days</h1>
+                            <p className='fs-5'>to fill most roles, sometimes same day</p>
                         </div>
                         <div className='col'>
                             <div>
-                                <span></span>
-                                <h3 className='text-success'>Time saved</h3>
+                                <span className='success-light bi bi-alarm-fill fs-3'></span>
+                                <h3 className='d-inline ms-2'>Time saved</h3>
                             </div>
-                            <h1 className='text-success'>50+ hours</h1>
-                            <p>of engineering team time saved per developer for interviewing</p>
+                            <h1 className='success-light'>50+ hours</h1>
+                            <p className='fs-5'>of engineering team time saved per developer for interviewing</p>
                         </div>
                         <div className='col'>
                             <div>
-                                <span></span>
-                                <h3 className='text-success'>Retention</h3>
+                                <span className='success-light bi bi-hand-thumbs-up-fill fs-3'></span>
+                                <h3 className='d-inline ms-2'>Retention</h3>
                             </div>
-                            <h1 className='text-success'>97%</h1>
-                            <p>engagement success rate</p>
+                            <h1 className='success-light'>97%</h1>
+                            <p className='fs-5'>engagement success rate</p>
                         </div>
                     </div>
                 </div>
@@ -117,12 +117,12 @@ const LandingPage = () => {
                             <p>Seniority levels</p>
                         </div>
                     </div>
-                    <div className='gx-5'>
+                    <div className=''>
                         <button className="btn btn-lg btn-light text-primary">Hire developers</button>
                         <button className="btn btn-lg btn-outline-white">Apply for jobs</button>
                     </div>
                     </div>
-                    <div className='col rounded-circle'>
+                    <div className='col'>
                         <img src="https://images.pexels.com/photos/6930549/pexels-photo-6930549.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" />
                     </div>
                 </div>
@@ -132,80 +132,118 @@ const LandingPage = () => {
                         <h2>Why are the best developers joining WorkConnect?
                             Because they want careers, not gigs.
                         </h2>
-                        <ul>
-                            <li><span></span>Vetted once, eligible for life</li>
-                            <li><span></span>Exclusive WorkConnect developer success rate</li>
-                            <li><span></span>Income stability, thanks to 99% rematch rate</li>
+                        <ul className='list-unstyled gx-3'>
+                            <li className='fs-4 my-4'><span className='bi bi-person-check-fill text-primary me-3'></span>Vetted once, eligible for life</li>
+                            <li className='fs-4 mb-4'><span className='bi bi-star-fill text-primary me-3'></span>Exclusive WorkConnect developer success rate</li>
+                            <li className='fs-4 mb-4'><span className='bi bi-wrench-adjustable text-primary me-3'></span>Income stability, thanks to 99% rematch rate</li>
                         </ul>
                         <button className="btn btn-lg btn-primary">Apply for jobs</button>
                     </div>
                 </div>
-                {/* <div className='my-5 bg-padding light-grey'>
-                    <h2>People love WorkConnect</h2>
-                    <p>See what people have to say about us</p>
-                    <div>
-                    <img src="https://media.istockphoto.com/id/1173324914/photo/attractive-hands-showing-five-stars-rating-on-a-smart-phone.jpg?b=1&s=612x612&w=0&k=20&c=YJgNlqhroXvtm51G59vUApdjt8zboVY0yF_n_jJegfs=" className="d-block w-25 h-auto" alt="..." />
-                    </div>
-                    <h2>4.7 star out of 5</h2>
-                    <p>Based on developers reviews as of {currentMonth} 2023</p>
-                </div> */}
                 <hr className='hr' />
                 <div className='my-5 bg-padding text-center'>
-                    <h1>People love WorkConnect</h1>
-                    <h3>See what people have to say about us</h3>
-                    <div id="carouselExampleDark" className="carousel carousel-dark slide mt-5">
-                        <div className="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                        </div>
+                    <h1>People <i className='material-icons fs-3' style={{color: 'red'}}>favorite</i> WorkConnect</h1>
+                    <h3>See what others have to say about us</h3>
+                
+                        <div id="carouselExampleControls" className="carousel slide text-center carousel-dark" data-ride="carousel">
                         <div className="carousel-inner">
-                            <div className="carousel-item active" data-bs-interval="10000">
-                            <img src="https://media.istockphoto.com/id/1173324914/photo/attractive-hands-showing-five-stars-rating-on-a-smart-phone.jpg?b=1&s=612x612&w=0&k=20&c=YJgNlqhroXvtm51G59vUApdjt8zboVY0yF_n_jJegfs=" className="d-block w-100 h-auto" alt="..." />
-                            <div className="carousel-caption d-none d-md-block">
-                                <h3>Vladok Hriodik</h3>
-                                <h6>Head of Operations, Dot Codes Inc.</h6>
-                                <i>I hired 50% of my staff base through WorkConnect. I am happy I used WorkConnect.</i>
+                            <div className="carousel-item active">
+                            <img className="rounded-circle shadow-1-strong mb-4"
+                                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" alt="avatar" />
+                            <div className="row d-flex justify-content-center">
+                                <div className="col-lg-8">
+                                <h5 className="mb-3">Maria Kate</h5>
+                                <p>Django Developer</p>
+                                <p className="text-muted">
+                                    <i className="fas fa-quote-left pe-2"></i>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus et deleniti
+                                    nesciunt sint eligendi reprehenderit reiciendis, quibusdam illo, beatae quia
+                                    fugit consequatur laudantium velit magnam error. Consectetur distinctio fugit
+                                    doloremque.
+                                </p>
+                                </div>
                             </div>
-                            </div>
-                            <div className="carousel-item" data-bs-interval="2000">
-                            <img src="https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=600" className="d-block w-100 h-auto" alt="..." />
-                            <div className="carousel-caption d-none d-md-block">
-                                <h5>Second slide label</h5>
-                                <p>Some representative placeholder content for the second slide.</p>
-                            </div>
+                            <ul className="list-unstyled d-flex justify-content-center text-warning mb-0">
+                                <li><i className="fas fa-star fa-sm"></i></li>
+                                <li><i className="fas fa-star fa-sm"></i></li>
+                                <li><i className="fas fa-star fa-sm"></i></li>
+                                <li><i className="fas fa-star fa-sm"></i></li>
+                                <li><i className="far fa-star fa-sm"></i></li>
+                            </ul>
                             </div>
                             <div className="carousel-item">
-                            <img src="..." className="d-block w-100" alt="..." />
-                            <div className="carousel-caption d-none d-md-block">
-                                <h5>Third slide label</h5>
-                                <p>Some representative placeholder content for the third slide.</p>
+                            <img className="rounded-circle shadow-1-strong mb-4"
+                                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" />
+                            <div className="row d-flex justify-content-center">
+                                <div className="col-lg-8">
+                                <h5 className="mb-3">Jerry Thomas</h5>
+                                <p>Web Developer</p>
+                                <p className="text-muted">
+                                    <i className="fas fa-quote-left pe-2"></i>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus et deleniti
+                                    nesciunt sint eligendi reprehenderit reiciendis.
+                                </p>
+                                </div>
                             </div>
+                            <ul className="list-unstyled d-flex justify-content-center text-warning mb-0">
+                                <li><i className="fas fa-star fa-sm"></i></li>
+                                <li><i className="fas fa-star fa-sm"></i></li>
+                                <li><i className="fas fa-star fa-sm"></i></li>
+                                <li><i className="fas fa-star fa-sm"></i></li>
+                                <li><i className="far fa-star fa-sm"></i></li>
+                            </ul>
+                            </div>
+                            <div className="carousel-item">
+                            <img className="rounded-circle shadow-1-strong mb-4"
+                                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp" alt="avatar" />
+                            <div className="row d-flex justify-content-center">
+                                <div className="col-lg-8">
+                                <h5 className="mb-3">Anna Deynah</h5>
+                                <p>UX Designer</p>
+                                <p className="text-muted">
+                                    <i className="fas fa-quote-left pe-2"></i>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus et deleniti
+                                    nesciunt sint eligendi reprehenderit reiciendis, quibusdam illo, beatae quia
+                                    fugit consequatur laudantium velit magnam error. Consectetur distinctio fugit
+                                    doloremque.
+                                </p>
+                                </div>
+                            </div>
+                            <ul className="list-unstyled d-flex justify-content-center text-warning mb-0">
+                                <li><i className="fas fa-star fa-sm"></i></li>
+                                <li><i className="fas fa-star fa-sm"></i></li>
+                                <li><i className="fas fa-star fa-sm"></i></li>
+                                <li><i className="fas fa-star fa-sm"></i></li>
+                                <li><i className="far fa-star fa-sm"></i></li>
+                            </ul>
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
+                        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                            data-bs-slide="prev">
+                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span className="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
+                        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                            data-bs-slide="next">
+                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span className="visually-hidden">Next</span>
                         </button>
                         </div>
-                </div>
+            </div>
+
                 <div className='mt-5 text-center mild-dark bgg-padding-y text-white'>
                     <h2>Hire remote developers</h2>
                     <h3>Tell us the skills you need and we will find the best developer for you</h3>
                     <button className="btn btn-lg btn-primary">Hire developers</button>
                 </div>
-                <footer className='bg-padding-x py-5 text-bg-dark'>
-                    <div className='row me-3 gx-4 mb-4'>
+                <footer className='p-5 text-bg-dark'>
+                    <div className='row me-3 gx-4'>
                         <div className='col'>
-                            <h2><Link to='/'>WorkConnect</Link></h2>
+                            <h2 className='smaller-heading'><Link to='/'>WorkConnect</Link></h2>
                         </div>
                         <div className='col'>
-                            <h2>Companies</h2>
-                            <ul>
+                            <h2 className='smaller-heading'>Companies</h2>
+                            <ul className='list-unstyled'>
                                 <li>Hire developers</li>
                                 <li>Book a call</li>
                                 <li>Explore services</li>
@@ -216,16 +254,16 @@ const LandingPage = () => {
                             </ul>
                         </div>
                         <div className='col'>
-                            <h2>Developers</h2>
-                            <ul>
+                            <h2 className='smaller-heading'>Developers</h2>
+                            <ul className='list-unstyled'>
                                 <li>Apply for Jobs</li>
                                 <li>Developer Login</li>
                                 <li>Remote Developer Jobs</li>
                             </ul>
                         </div>
                         <div className='col'>
-                            <h2>Company</h2>
-                            <ul>
+                            <h2 className='smaller-heading'>Company</h2>
+                            <ul className='list-unstyled'>
                                 <li>Blog</li>
                                 <li>Press</li>
                                 <li>About Us</li>
@@ -233,8 +271,8 @@ const LandingPage = () => {
                             </ul>
                         </div>
                         <div className='col'>
-                            <h2>Contact</h2>
-                            <ul>
+                            <h2 className='smaller-heading'>Contact</h2>
+                            <ul className='list-unstyled'>
                                 <li>Contact Us</li>
                                 <li>Health Center</li>
                                 <li>Developer Support</li>
@@ -244,21 +282,20 @@ const LandingPage = () => {
                     </div>
                     <div className='row mt-5'>
                         <div className='col'>
-                        <div className='row'>
-                            <span className='col'>F icon</span>
-                            <span className='col'>T icon</span>
-                            <span className='col'>Y icon</span>
-                            <span className='col'>I icon</span>
+                        <div className=''>
+                            <span className='bi bi-facebook fs-3 me-3' style={{color: '#3b5998'}}></span>
+                            <span className='bi bi-twitter fs-3 me-3' style={{color: '#00acee'}}></span>
+                            <span className='bi bi-youtube fs-3 me-3' style={{color: '#c4302b'}}></span>
+                            <span className='bi bi-instagram fs-3' style={{color: '#fccc63'}}></span>
                         </div>
-                        <p>Copyright {date} WorkConnect</p>
+                        <p>Copyright &copy; {date} WorkConnect</p>
                         <small>6, Lekki phase 1, Lagos state, Nigeria.</small>
                         </div>
-                        <div className="col"></div>
                         <div className='col display-flex'>
 
-                            <p className="col">Site Map</p>
-                            <p className="col">Terms of Service</p>
-                            <p className="col">Privacy Policy</p>
+                            <p className="me-3">Site Map</p>
+                            <p className="me-3">Terms of Service</p>
+                            <p className="me-3">Privacy Policy</p>
                         </div>
                     </div>
                 </footer>

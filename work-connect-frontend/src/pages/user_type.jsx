@@ -9,11 +9,11 @@ function UserType() {
 
   return (
     <React.Fragment>
-      <div className='user-type'>
-        <div onClick={() => navigate('/employer_signup_details')}>
+      <div className='d-flex justify-content-around align-items-center outer-box'>
+        <div onClick={() => navigate('/employer_signup_details')} className='inner-box d-flex justify-content-center align-items-center'>
           <Link><h1>Sign Up As An Employer</h1></Link>
         </div>
-        <div onClick={() => navigate('/employee_signup_details')}>
+        <div onClick={() => navigate('/employee_signup_details')} className='inner-box d-flex justify-content-center align-items-center'>
           <Link><h1>Sign Up As A job Seeker</h1></Link>
         </div>
       </div>

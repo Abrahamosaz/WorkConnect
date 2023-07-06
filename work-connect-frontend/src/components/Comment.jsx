@@ -7,10 +7,10 @@ const Comment = ({ props }) => {
 //   const [allComment, setAllComment] = useState([]);
   const token = localStorage.getItem('token');
 
-  const commentRef = useRef(null);
+  // const commentRef = useRef(null);
   const navigate = useNavigate();
 
-  const { postObject, setPostObject } = useContext(UserContext);
+  // const { postObject, setPostObject } = useContext(UserContext);
 
   const getComment = async () => {
     // setToggle((prev_toggle) => !prev_toggle);
@@ -58,24 +58,14 @@ const Comment = ({ props }) => {
   return (
     <div className='comment'>
         <div className='all-comments'>
-            {/* {allComment.map((comment) => {
-                const { id, content, created_at } = comment;
-                return (<div key={id}>
-                    <div className='display-comment'>
-                        <h3>{content}</h3>
-                        <h4><small>created at: {created_at}</small></h4>
-                    </div>
-                </div>)
-            })
-            } */}
         </div>
-        <div className='section-comment'>
-            <div className='like-posts'><a>Like</a></div>
-            <div className='comment-posts'><button onClick={getComment}>comment</button></div>
-            {/* <div className='create-comment' ref={commentRef}>
-                <input type='text' name='content' value={comment.content} onChange={(e) => setComment({content: e.target.value})}></input>
-                <button type='submit' onClick={postComment}>Add comment</button>
-            </div> */}
+        <div className='d-flex'>
+            <div className='me-3'>
+            <button className='btn btn-light px-3'>Like</button>
+            </div>
+            <div className=''>
+              <button onClick={getComment} className='btn btn-dark px-3'>Comment</button>
+            </div>
         </div>
     </div>
   )

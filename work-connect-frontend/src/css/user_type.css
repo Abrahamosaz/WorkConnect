@@ -6,8 +6,19 @@ div.user-type {
 }
 
 .user-type div {
-
     border: 2px solid black;
     margin: 20px;
     padding: 20px;
+}
+
+.outer-box {
+    width: 100vw;
+    height: 80vh;
+    position: relative;
+}
+
+.inner-box {
+    width: 40%;
+    height: 50vh;
+    border: 2px solid black;
 }
