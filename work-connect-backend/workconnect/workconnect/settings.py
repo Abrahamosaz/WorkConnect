@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-v#enk+ooqbv@bd-a&0rn6t*&jw^eve+2_b=i32_f)o$u=2^o@x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['workconnect-production.up.railway.app']
 
 
 # Application definition
@@ -64,7 +64,9 @@ ROOT_URLCONF = 'workconnect.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'frontend')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,11 +88,11 @@ HOST='127.0.0.1'
 DATABASES = {
  'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('RAILWAY_DATABASE_NAME'),
-        'USER': os.getenv('RAILWAY_DATABASE_USER'),
-        'PASSWORD': os.getenv('RAILWAY_DATABASE_PASSWORD'),
-        'HOST': os.getenv('RAILWAY_DATABASE_HOST'),
-        'PORT': os.getenv('RAILWAY_DATABASE_PORT')
+        'NAME': 'railway',
+        'USER': 'root',
+        'PASSWORD': 'e4cWnJlXWCjOg0FuoMKC',
+        'HOST': 'containers-us-west-111.railway.app',
+        'PORT': 5484
     }
 }
 
@@ -144,6 +146,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
+
+STATTICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frontend/static')
+]
 
 # media root
 
