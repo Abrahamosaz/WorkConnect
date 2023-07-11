@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic', 
     'rest_api',
     'rest_framework',
     'rest_framework.authtoken',
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 # cors allow all origins 
@@ -150,7 +152,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend/static')
 ]
-
+STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
 # media root
 
 MEDIA_ROOT = BASE_DIR / 'media'
