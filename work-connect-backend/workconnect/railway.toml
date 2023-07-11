@@ -1,0 +1,3 @@
+[services.backend]
+command = "gunicorn workconnect.wsgi"
+port = 8080

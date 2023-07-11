@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -81,16 +82,15 @@ WSGI_APPLICATION = 'workconnect.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
 HOST='127.0.0.1'
 DATABASES = {
-    'default': {
+ 'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'WorkConnect',
-        'PASSWORD': 'work-connect-app',
-        'HOST': HOST,
-        'PORT': 3306,
-        'USER': 'work-connect'
+        'NAME': os.getenv('RAILWAY_DATABASE_NAME'),
+        'USER': os.getenv('RAILWAY_DATABASE_USER'),
+        'PASSWORD': os.getenv('RAILWAY_DATABASE_PASSWORD'),
+        'HOST': os.getenv('RAILWAY_DATABASE_HOST'),
+        'PORT': os.getenv('RAILWAY_DATABASE_PORT')
     }
 }
 
@@ -143,6 +143,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static'
 
 # media root
 
