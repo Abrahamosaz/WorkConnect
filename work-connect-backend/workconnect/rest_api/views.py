@@ -18,6 +18,7 @@ from rest_framework import authentication, permissions
 from django.contrib.auth import authenticate
 import json
 
+#class that handle the post rest api requests [GET, POST]
 class PostViews(APIView):
 
 
@@ -50,6 +51,7 @@ class PostViews(APIView):
             return Response({'message': 'invalid credentials', 'errors': serializer.errors})
 
 
+#class that handle the get request for comments and post requests to create new comment concerning a post
 class CommentViews(APIView):
 
     authentication_classes = [authentication.TokenAuthentication]
@@ -78,7 +80,7 @@ class CommentViews(APIView):
         else:
             return Response({'message': 'invalid credentials', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
-
+#class that handle the logic for get and post requests for a job
 class JobViews(APIView):
 
     authentication_classes =[authentication.TokenAuthentication]
@@ -120,7 +122,6 @@ class ApplicationFromView(APIView):
     authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated]
 
-
     def post(self, request, job_id):
         data = request.data
         serializer = ApplicationFormSerializer(data=data)
@@ -153,7 +154,7 @@ class ApplicationFromView(APIView):
         serializer = ApplicationFormSerializer(application_form, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-
+#regitser employer user and return the user data after creating and saving to the database
 @api_view(['POST'])
 def RegisterEmployerUser(request):
     data = request.data
@@ -169,7 +170,7 @@ def RegisterEmployerUser(request):
     else:
         return Response({'message': 'invalid data', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
-
+#register a employee user and return the user data after creating and saving to the database
 @api_view(['POST'])
 def RegisterEmployeeUser(request):
     data = request.data
@@ -185,6 +186,7 @@ def RegisterEmployeeUser(request):
         return Response({'message': 'invalid data', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 
+#api function to check the type of user register to the site and get the user information
 @api_view(['GET'])
 @authentication_classes([authentication.TokenAuthentication])
 @permission_classes([permissions.IsAuthenticated])
@@ -209,7 +211,7 @@ def get_user_info(request):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-
+#authenticate the user information with the email and password
 @api_view(['POST'])
 def UserLogin(request):
     email = request.data.get('email', None)
@@ -226,7 +228,7 @@ def UserLogin(request):
             return Response({'message': 'Register a user'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
-
+#create a new user and store in the database
 @api_view(['POST'])
 def create_user(request):
     data = request.data
@@ -244,14 +246,14 @@ def create_user(request):
     else:
         return Response({'message': 'failed', 'error': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
-
+#api function to get the latest user information
 @api_view(['GET'])
 def get_latest_user(request):
     user = User.objects.latest('date_joined')
     serializer = UserSerializer(user)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
-
+#api function to check if the user exits in the database
 @api_view(['GET'])
 @authentication_classes([authentication.TokenAuthentication])
 @permission_classes([permissions.IsAuthenticated])
