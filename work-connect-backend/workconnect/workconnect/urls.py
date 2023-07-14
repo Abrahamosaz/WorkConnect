@@ -6,5 +6,5 @@ from .view import index
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('rest_api.urls')),
-    re_path(r'^.$', index)
+    re_path(r'^.*$', index)
 ]
