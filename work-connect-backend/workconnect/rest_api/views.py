@@ -222,7 +222,7 @@ def UserLogin(request):
         user = authenticate(email=email, password=password)
         if user:
             (token, created) = Token.objects.get_or_create(user=user)
-            return Response({'message': 'success', 'token': token.key}, status=status.HTTP_202_ACCEPTED)
+            return Response({'message': 'success', 'token': token.key, 'username': user.username, 'user_id': user.id}, status=status.HTTP_202_ACCEPTED)
         else:
             return Response({'message': 'Register a user'}, status=status.HTTP_401_UNAUTHORIZED)
 

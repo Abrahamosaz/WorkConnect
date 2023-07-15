@@ -61,11 +61,14 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class JobSerializer(serializers.ModelSerializer):
+    employer_user_id = serializers.SerializerMethodField(required=False)
     class Meta:
         model = Job
         fields = '__all__'
         read_only_fields =['employer_user']
-        depth = 1
+
+    def get_employer_user_id(self, obj):
+        return obj.employer_user.user.id
 
 
 class ApplicationFormSerializer(serializers.ModelSerializer):
