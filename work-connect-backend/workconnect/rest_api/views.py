@@ -106,10 +106,9 @@ class JobViews(APIView):
         serializer = JobSerializer(data=data)
         if serializer.is_valid():
             try:
-                employer_id = request.data['employer_id']
-            except KeyError:
-                return Response({'message': 'provide the employer_id key'}, status=status.HTTP_400_BAD_REQUEST)
-            employer = Employer_user.objects.get(id=employer_id)
+                employer = Employer_user.objects.get(user=request.user)
+            except Employer_user.DoesNotExist:
+                return Response({'message': 'failed'}, status=status.HTTP_400_BAD_REQUEST)
             serializer.validated_data['employer_user'] = employer
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
