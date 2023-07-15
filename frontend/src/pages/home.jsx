@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { UserContext } from '../contexts/user.contexts';
+import { useNavigate } from 'react-router-dom';
 import Posts from '../components/posts';
 /* css import */
 import '../css/home.css';
@@ -12,8 +12,8 @@ function Home() {
     const [posts, setPosts] = useState([]);
     const [searchpost, setSearchPost] = useState('');
     const [checkpost, setCheckpost] = useState('');
+    const navigate = useNavigate();
 
-    // const {isLoggedIn } = useContext(UserContext);
     
     const getPost = async (url) => {
         const token = localStorage.getItem('token');
@@ -37,7 +37,7 @@ function Home() {
     }};
 
     useEffect (() => {
-        const url = 'http://localhost:8000/api/post/';
+        const url = 'https://workconnect-production.up.railway.app/api/post/';
         getPost(url);
 
     }, [])
@@ -46,7 +46,7 @@ function Home() {
 
     const handleSearch = async (e) => {
         e.preventDefault();
-        const  response = await fetch(`http://localhost:8000/api/post/?title=${searchpost}`, {
+        const  response = await fetch(`https://workconnect-production.up.railway.app/api/post/?title=${searchpost}`, {
             headers: {
                 Authorization: `Token ${localStorage.getItem('token')}`
             }
@@ -59,21 +59,27 @@ function Home() {
             setCheckpost(true);
         }
     };
+
+
     return (
             <section className="py-5 bg-padding-x">
                 <div className="text-center my-3">
-                <form class="d-flex" role="search">
+                <form className="d-flex" role="search">
                     <input 
-                    class="form-control me-2" 
+                    className="form-control me-2" 
                     type="search" 
                     name='search' 
                     value={searchpost} 
                     onChange={(e) => setSearchPost(e.target.value)} 
                     placeholder="Search Posts" 
                     aria-label="Search" />
-                    <button class="btn btn-outline-success" onClick={handleSearch}>Search</button>
+                    <button className="btn btn-outline-success" onClick={handleSearch}>Search</button>
                 </form>
                 </div>
+                <button style={{
+                    marginLeft: '20px', padding: '10px', borderRadius: '8px',
+                    height: '20px', textAlign: 'center', width: '100px', fontSize: '12px',
+                    display: 'flex', justifyContent: 'center', alignItems: 'center', fontWeight: 'bold'}} onClick={() => navigate('/create-post')}>Create Post</button>
                 {!checkpost? <Posts posts={posts} /> : <h3>no post found</h3>}
             </section>
             )

@@ -36,8 +36,10 @@ const UserLogin = () => {
             })
         });
         const data = await response.json();
+        console.log(data);
         if (response.status === 202) {
             localStorage.setItem('token', data.token);
+            localStorage.setItem('user_id', data.user_id);
             setIsError(false);
             setErrorMessage("");
             setIsLoggedIn(true);

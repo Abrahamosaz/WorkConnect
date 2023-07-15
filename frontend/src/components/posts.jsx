@@ -8,10 +8,7 @@ import Comment from  './Comment';
 const Posts = ({ posts }) => {
 
   const postCount = posts.length;
-
-  useEffect (() => {
-  }, []);
-
+  
   return (
     <React.Fragment>
     {postCount > 0?

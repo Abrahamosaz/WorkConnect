@@ -14,6 +14,7 @@ function Navbar() {
 
     const logout = () => {
         localStorage.removeItem('token');
+        localStorage.removeItem('user_id');
         setToken(null);
         setIsLoggedIn(false);
         navigate('/');
@@ -31,7 +32,7 @@ function Navbar() {
     const home_route = isLoggedIn ? '/home' : '/';
 
     const handleProfileClick = async () => {
-        const response = await fetch('http://localhost:8000/api/check_user/', {
+        const response = await fetch('https://workconnect-production.up.railway.app/api/check_user/', {
             headers: { Authorization: `Token ${localStorage.getItem('token')}` }
         });
         const data = await response.json();
@@ -63,7 +64,6 @@ function Navbar() {
                             :
                             (
                                 <React.Fragment>
-                                    <li className="nav-item"><Link to='/jobs' className="nav-link">All Jobs</Link></li>
                                     <li className="nav-item"><Link to='/login' className="nav-link">Login</Link></li>
                                     <li className="nav-item"><Link to='/sign_up' className="nav-link">Sign up</Link></li>
                                 </React.Fragment>

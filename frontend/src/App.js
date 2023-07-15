@@ -15,6 +15,7 @@ import LandingPage from './pages/landing_page';
 import CommentPage from './pages/comment_page';
 import Jobs from './pages/jobs';
 import CreateJobs from './pages/create_job';
+import CreatePost from './pages/create_post';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
       <Route path='home' element={<Home />} />
       <Route path='sign_up' element={<UserSignup />} />
       <Route path='comment-page' element={<CommentPage />} />
+      <Route path='create-post' element={<CreatePost/>}/>
       <Route path='login' element={<UserLogin />} />
       <Route path='sign_up_success' element={<SignupSuccess />} />
       <Route path='jobs' element={<Jobs />} />

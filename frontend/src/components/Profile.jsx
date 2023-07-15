@@ -4,8 +4,6 @@ import '../css/profile.css';
 const Profile = ({ props }) => {
     const firtname = props.firstname;
     const lastname = props.lastname;
-    console.log(props)
-    console.log(props.profile_picture);;
   return (
     <div className='container px-5'>
         <div>

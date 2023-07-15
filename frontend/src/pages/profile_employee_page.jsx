@@ -19,7 +19,7 @@ const ProfileEmployeePage = () => {
   }
 
   useEffect (() => {
-    getUserInfo('http://localhost:8000/api/user_info/?user=employee');
+    getUserInfo('https://workconnect-production.up.railway.app/api/user_info/?user=employee');
   }, [])
 
   return (

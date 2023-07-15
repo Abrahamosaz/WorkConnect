@@ -12,7 +12,7 @@ const Comment = ({ props }) => {
 
   const getComment = async () => {
 
-    const url = `http://localhost:8000/api/post/${id}/comments/`;
+    const url = `https://workconnect-production.up.railway.app/api/post/${id}/comments/`;
     const response = await fetch(url, {
         headers: { 'Authorization': `Token ${token}` }
     });

@@ -13,7 +13,7 @@ const CommentPage = () => {
   const { id } = postObject.post;
 
   const postComment = async () => {
-    const response = await fetch(`http://localhost:8000/api/post/${id}/comments/`, {
+    const response = await fetch(`https://workconnect-production.up.railway.app/api/post/${id}/comments/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Token ${localStorage.getItem('token')}` },
         body: JSON.stringify({ content: commentvalue })

@@ -45,16 +45,15 @@ function EmployeeSignUpDetails() {
             body: form
         });
         const json_data = await res.json();
-        console.log(json_data);
         navigate('/sign_up_success');
     };
 
     const handleForm =  async (e) => {
         e.preventDefault();
-        const user = getUser('http://localhost:8000/api/users/latest/');
+        const user = getUser('https://workconnect-production.up.railway.app/api/users/latest/');
         user
         .then((data) => {
-            const url = "http://localhost:8000/api/register-employee/";
+            const url = 'https://workconnect-production.up.railway.app/api/register-employee/';
             registerUser(url, data);
         })
         .catch((err) => console.log(err));

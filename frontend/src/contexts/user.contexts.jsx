@@ -6,7 +6,7 @@ export const UserContext = createContext({
     isLoggedIn: false,
     setIsLoggedIn: () => null,
     postObject: {},
-    setPostObject: () => null,
+    setPostObject: () => null
 });
 
 export const UserProvider = ({ children }) => {

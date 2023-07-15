@@ -39,7 +39,7 @@ function UserSignup() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const url = 'http://localhost:8000/api/users/';
+        const url = 'https://workconnect-production.up.railway.app/api/users/';
         const response = fetch(url, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
