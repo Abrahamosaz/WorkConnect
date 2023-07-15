@@ -3,7 +3,7 @@ from .views import (PostViews, RegisterEmployerUser,
                     RegisterEmployeeUser, UserLogin,
                     CommentViews, ApplicationFromView,
                     JobViews, create_user, get_latest_user,
-                    check_user, get_user_info
+                    check_user, get_user_info, get_all_users
                     )
 
 urlpatterns = [
@@ -17,5 +17,6 @@ urlpatterns = [
     path('application-form/<int:job_id>/', ApplicationFromView.as_view()),
     path('users/latest/', get_latest_user),
     path('check_user/', check_user),
-    path('user_info/', get_user_info)
+    path('user_info/', get_user_info),
+    path('all-users/', get_all_users)
 ]

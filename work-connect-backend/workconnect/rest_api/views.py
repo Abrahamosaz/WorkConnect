@@ -267,3 +267,25 @@ def check_user(request):
             return Response({'user': 'user not found'}, status=status.HTTP_404_NOT_FOUND)
         return Response({'user': 'employee'}, status=status.HTTP_200_OK)
     return Response({'user': 'employer'}, status=status.HTTP_200_OK)
+
+
+#get all users in the sites
+@api_view(['GET'])
+@authentication_classes([authentication.TokenAuthentication])
+@permission_classes([permissions.IsAuthenticated])
+def get_all_users(request):
+    username = request.query_params.get('username', None)
+    if username:
+        try:
+            users = User.objects.filter(username__icontains=username)
+        except User.DoesNotExist:
+            return Response({'message': 'user with username does not exist'}, status=status.HTTP_404_NOT_FOUND)
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    else:
+        users = User.objects.all()
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+    
