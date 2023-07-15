@@ -65,7 +65,7 @@ class JobSerializer(serializers.ModelSerializer):
     class Meta:
         model = Job
         fields = '__all__'
-        read_only_fields =['employer_user']
+        read_only_fields =['employer_user', 'employer_user_id']
 
     def get_employer_user_id(self, obj):
         return obj.employer_user.user.id
