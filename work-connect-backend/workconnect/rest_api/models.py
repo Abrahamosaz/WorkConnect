@@ -38,7 +38,7 @@ class Employer_user(models.Model):
     state = models.CharField(max_length=100)
     country = models.CharField(max_length=100, null=False, blank=False)
     profile_pic = models.ImageField(upload_to=upload_employer_file, blank=True, null=True)
-    about_company = models.CharField(max_length=2000, blank=True, null=True)
+    about_company = models.CharField(max_length=2000, blank=True)
 
     def __str__(self):
         return self.user.first_name
@@ -53,6 +53,14 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+    
+
+class PostLikes(models.Model):
+    post = models.ForeignKey(Post, blank=True, on_delete=models.CASCADE)
+    likes = models.ManyToManyField(User, blank=True)
+
+    def __str__(self):
+        return self.post.title
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)

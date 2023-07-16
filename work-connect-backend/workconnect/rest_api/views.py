@@ -4,14 +4,14 @@ from .serializers import (
     PostSerializer, EmployeeSerializer,
     EmployerSerializer, UserSerializer,
     CommentSerializer, ApplicationFormSerializer,
-    JobSerializer
+    JobSerializer, PostLikeSerializer
     )
 from rest_framework.authtoken.models import Token
 from rest_framework import status
 from rest_framework.views import APIView 
 from .models import (
     Post, Employee_user, Employer_user,
-    User, Comment, Application_form, Job
+    User, Comment, Application_form, Job, PostLikes
     )
 from datetime import date
 from rest_framework import authentication, permissions
@@ -286,6 +286,38 @@ def get_all_users(request):
         users = User.objects.all()
         serializer = UserSerializer(users, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+#handle post likes
+@api_view(['POST'])
+@authentication_classes([authentication.TokenAuthentication])
+@permission_classes([permissions.IsAuthenticated])
+def handle_post_likes(request):
+    post_id = request.query_params.get('post_id', None)
+
+    if post_id:
+        try:
+            post = Post.object.get(id=post_id)
+        except Post.DoesNotExist:
+            return Response({'message': 'post does not exist'}, status=status.HTTP_404_NOT_FOUND)
+        postlike_obj = PostLikes.objects.get(post=post)
+
+        if request.method == 'POST':
+            postlike_obj.likes.add(request.user)
+            postlike_obj.save()
+            serializer = PostLikeSerializer(postlike_obj)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        
+        elif request.methhod == 'GET':
+            serializer = PostLikeSerializer(postlike_obj)
+            return  Response(serializer.data, status=status.HTTP_200_OK)
+
+    else:
+        return Response({'message': 'provide the post_id as query string'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
 
 
     
