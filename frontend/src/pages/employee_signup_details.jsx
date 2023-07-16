@@ -45,7 +45,11 @@ function EmployeeSignUpDetails() {
             body: form
         });
         const json_data = await res.json();
-        navigate('/sign_up_success');
+        if  (res.status ===  200) {
+            navigate('/login')
+        } else {
+            console.log(json_data.message);
+        }
     };
 
     const handleForm =  async (e) => {

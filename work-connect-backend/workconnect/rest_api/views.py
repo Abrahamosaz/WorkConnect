@@ -289,7 +289,7 @@ def get_all_users(request):
 
 
 #handle post likes
-@api_view(['POST'])
+@api_view(['GET', 'POST'])
 @authentication_classes([authentication.TokenAuthentication])
 @permission_classes([permissions.IsAuthenticated])
 def handle_post_likes(request):
@@ -297,7 +297,7 @@ def handle_post_likes(request):
 
     if post_id:
         try:
-            post = Post.object.get(id=post_id)
+            post = Post.objects.get(id=post_id)
         except Post.DoesNotExist:
             return Response({'message': 'post does not exist'}, status=status.HTTP_404_NOT_FOUND)
         postlike_obj = PostLikes.objects.get(post=post)
@@ -308,7 +308,7 @@ def handle_post_likes(request):
             serializer = PostLikeSerializer(postlike_obj)
             return Response(serializer.data, status=status.HTTP_200_OK)
         
-        elif request.methhod == 'GET':
+        elif request.method == 'GET':
             serializer = PostLikeSerializer(postlike_obj)
             return  Response(serializer.data, status=status.HTTP_200_OK)
 

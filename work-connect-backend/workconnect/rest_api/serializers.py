@@ -31,11 +31,11 @@ class PostLikeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PostLikes
-        exclude = ['post', 'likes']
+        fields = ['like_count']
         read_only_fields = ['like_count']
 
     def get_like_count(self, obj):
-        return len(obj.likes)
+        return len(obj.likes.all())
 
 
 class EmployerSerializer(serializers.ModelSerializer):
