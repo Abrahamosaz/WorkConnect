@@ -22,7 +22,7 @@ class PostSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         post_obj = Post.objects.create(**validated_data)
-        PostLikes.objects.create(post_obj)
+        PostLikes.objects.create(post=post_obj)
         return post_obj
 
 class PostLikeSerializer(serializers.ModelSerializer):
