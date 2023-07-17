@@ -9,6 +9,7 @@ function Navbar() {
 
     const navigate = useNavigate();
     const [token, setToken] = useState(localStorage.getItem('token'));
+    const [users, setUsers] = useState(null);
 
     const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
 
@@ -28,6 +29,20 @@ function Navbar() {
             setIsLoggedIn(true);
         }
     }, [])
+
+    useEffect(() => {
+        console.log('useEffect run');
+        if (localStorage.getItem('token')) {
+            fetch('https://workconnect-production.up.railway.app/api/all-users/', {
+                headers: { Authorization: `Token ${localStorage.getItem('token')}`}
+            })
+            .then((response) =>  {
+                return response.json();
+            })
+            .then((data) => setUsers(data))
+            .catch((error) => console.log(error));
+        }
+    }, []);
 
     const home_route = isLoggedIn ? '/home' : '/';
 
@@ -57,6 +72,18 @@ function Navbar() {
                             isLoggedIn?
                             <React.Fragment>
                             <li className="nav-item" onClick={() => navigate('/jobs')}><Link className="nav-link active">Apply for Jobs</Link></li>
+                            <div className='dropdown'>
+                                <li className='nav-item'><Link className='nav-link'>Friends</Link></li>
+                                <div className='dropdown-content'>
+                                    {users && users.map((user) => {
+                                        return (<div style={{margin: '5px', display: 'flex', alignItems: 'center'}} key={user.id}>
+                                            <div style={{ width: '30px', height: '30px', borderRadius: '50%', border: 'solid black 2px'}}></div>
+                                            <div><p style={{fontWeight: 'bold', marginLeft: '5px', alignText: 'center'}}>{user.username}</p></div>
+                                        </div>)
+                                    })}
+
+                                </div>
+                            </div>
                             <li className="nav-item" onClick={() => navigate('/home')}><Link className="nav-link">Home</Link></li>
                             <li className="nav-item" onClick={logout}><Link to='/' className="nav-link">Logout</Link></li>
                             <li className="nav-item" onClick={handleProfileClick}><Link className="nav-link">Profile</Link></li>

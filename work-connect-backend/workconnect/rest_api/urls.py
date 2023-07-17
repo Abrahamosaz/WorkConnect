@@ -3,7 +3,8 @@ from .views import (PostViews, RegisterEmployerUser,
                     RegisterEmployeeUser, UserLogin,
                     CommentViews, ApplicationFromView,
                     JobViews, create_user, get_latest_user,
-                    check_user, get_user_info, get_all_users
+                    check_user, get_user_info, get_all_users,
+                    handle_post_likes
                     )
 
 urlpatterns = [
@@ -18,5 +19,6 @@ urlpatterns = [
     path('users/latest/', get_latest_user),
     path('check_user/', check_user),
     path('user_info/', get_user_info),
-    path('all-users/', get_all_users)
+    path('all-users/', get_all_users),
+    path('likes/', handle_post_likes)
 ]

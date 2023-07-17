@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import (Post, Employee_user, Employer_user,
-                     User, Comment, Job, Application_form)
+                     User, Comment, Job, Application_form, PostLikes)
 
 import re
 
@@ -22,7 +22,20 @@ class PostSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         post_obj = Post.objects.create(**validated_data)
+        PostLikes.objects.create(post=post_obj)
         return post_obj
+
+class PostLikeSerializer(serializers.ModelSerializer):
+    like_count = serializers.SerializerMethodField(required=False)
+
+
+    class Meta:
+        model = PostLikes
+        fields = ['like_count', 'likes']
+        read_only_fields = ['like_count', 'likes']
+
+    def get_like_count(self, obj):
+        return len(obj.likes.all())
 
 
 class EmployerSerializer(serializers.ModelSerializer):

@@ -24,7 +24,7 @@ const UserLogin = () => {
     const handleSubmit = async (event) => {
 
         event.preventDefault();
-        const url = 'http://localhost:8000/api/login/';
+        const url = 'https://workconnect-production.up.railway.app/api/login/';
         const response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -36,7 +36,6 @@ const UserLogin = () => {
             })
         });
         const data = await response.json();
-        console.log(data);
         if (response.status === 202) {
             localStorage.setItem('token', data.token);
             localStorage.setItem('user_id', data.user_id);

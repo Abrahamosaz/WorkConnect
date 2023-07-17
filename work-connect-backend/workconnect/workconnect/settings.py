@@ -90,11 +90,11 @@ HOST='127.0.0.1'
 DATABASES = {
  'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'railway',
-        'USER': 'root',
-        'PASSWORD': 'e4cWnJlXWCjOg0FuoMKC',
-        'HOST': 'containers-us-west-111.railway.app',
-        'PORT': 5484
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': os.getenv('DATABASE_HOST'),
+        'PORT': os.getenv('DATABASE_PORT')
     }
 }
 
