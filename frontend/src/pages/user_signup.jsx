@@ -55,8 +55,6 @@ function UserSignup() {
         const data = await response;
         const json_data = await data.json()
         if (data.status === 201) {
-            console.log('success');
-            localStorage.setItem('token', data.token);
             setIsError(false);
             setUserInfo({
                 username: '',
