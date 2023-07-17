@@ -56,6 +56,7 @@ class Post(models.Model):
     
 
 class PostLikes(models.Model):
+    #should have been a OneToOneField relationship
     post = models.ForeignKey(Post, blank=True, on_delete=models.CASCADE)
     likes = models.ManyToManyField(User, blank=True)
 

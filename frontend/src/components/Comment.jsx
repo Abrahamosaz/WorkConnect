@@ -6,6 +6,7 @@ const Comment = ({ props }) => {
   const { id } = props;
   const token = localStorage.getItem('token');
   const [likeCount, setLikeCount] = useState(0);
+  const likeRef = useRef();
 
   const navigate = useNavigate();
 
@@ -28,23 +29,38 @@ const Comment = ({ props }) => {
   };
 
   const handleLikes = () => {
-    fetch(`http://localhost:8000/api/likes/?post_id=${id}`, {
+    fetch(`https://workconnect-production.up.railway.app/api/likes/?post_id=${id}`, {
       method: 'POST',
       headers: { Authorization: `Token ${localStorage.getItem('token')}`}
     })
     .then((res) => res.json())
-    .then((data) => setLikeCount(() => data.like_count))
-    .catch((error) => console.log(error));
+    .then((data) => {
+      if (data.check) {
+        console.log('check', data);
+        fetch(`https://workconnect-production.up.railway.app/api/likes/?post_id=${id}`, {
+          method: 'DELETE',
+          headers: { Authorization: `Token ${localStorage.getItem('token')}` }
+        })
+        .then((res) => res.jsson())
+        .then((data) => {
+          setLikeCount(() => data.like_count);
+        })
+        .catch((error) => console.log(error))
 
+      } else {
+        setLikeCount(() => data.like_count);
+      }
+    })
+    .catch((error) => console.log(error));
   }
 
   useEffect (() => {
-    fetch(`http://localhost:8000/api/likes/?post_id=${id}`, {
+    fetch(`https://workconnect-production.up.railway.app/api/likes/?post_id=${id}`, {
       headers: { Authorization: `Token ${localStorage.getItem('token')}` }
     })
     .then((response) => response.json())
     .then((data) => setLikeCount(() => data.like_count))
-    .catch((error) => console.log(error));
+    .catch((error) => console.log('error from comment', error));
   }, []);
 
   return (
@@ -55,7 +71,7 @@ const Comment = ({ props }) => {
         </div>
         <div className='d-flex'>
             <div className='me-3'>
-            <button className='btn btn-light px-3' onClick={handleLikes}>Like</button>
+            <button className='btn btn-light px-3' onClick={handleLikes} ref={likeRef}>Like</button>
             </div>
             <div className=''>
               <button onClick={getComment} className='btn btn-dark px-3'>Comment</button>

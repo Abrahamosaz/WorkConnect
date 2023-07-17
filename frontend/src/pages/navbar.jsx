@@ -9,7 +9,7 @@ function Navbar() {
 
     const navigate = useNavigate();
     const [token, setToken] = useState(localStorage.getItem('token'));
-    const [users, setUsers] = useState([]);
+    const [users, setUsers] = useState(null);
 
     const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
 

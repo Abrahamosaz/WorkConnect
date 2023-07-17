@@ -289,7 +289,7 @@ def get_all_users(request):
 
 
 #handle post likes
-@api_view(['GET', 'POST'])
+@api_view(['GET', 'POST', 'DELETE'])
 @authentication_classes([authentication.TokenAuthentication])
 @permission_classes([permissions.IsAuthenticated])
 def handle_post_likes(request):
@@ -303,15 +303,26 @@ def handle_post_likes(request):
         postlike_obj = PostLikes.objects.get(post=post)
 
         if request.method == 'POST':
-            postlike_obj.likes.add(request.user)
-            postlike_obj.save()
+            try:
+                PostLikes.objects.filter(likes__id=request.user.id).get(id=post_id)
+            except Exception:
+                postlike_obj.likes.add(request.user)
+                postlike_obj.save()
+                serializer = PostLikeSerializer(postlike_obj)
+                return Response(serializer.data, status=status.HTTP_200_OK)
             serializer = PostLikeSerializer(postlike_obj)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response({'like_count': serializer.data['like_count'], 'check': 'yes'}, status=status.HTTP_200_OK)
         
         elif request.method == 'GET':
             serializer = PostLikeSerializer(postlike_obj)
-            return  Response(serializer.data, status=status.HTTP_200_OK)
-
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        
+        elif request.method == 'DELETE':
+            postlike_obj.likes.remove(request.user)
+            postlike_obj.save()
+            serializer = PostLikeSerializer(postlike_obj)
+            return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+        
     else:
         return Response({'message': 'provide the post_id as query string'}, status=status.HTTP_400_BAD_REQUEST)
 
