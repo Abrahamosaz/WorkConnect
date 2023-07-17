@@ -45,7 +45,7 @@ function EmployeeSignUpDetails() {
             body: form
         });
         const json_data = await res.json();
-        if  (res.status ===  200) {
+        if  (res.status ===  201) {
             navigate('/login')
         } else {
             console.log(json_data.message);
