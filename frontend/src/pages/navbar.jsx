@@ -10,7 +10,6 @@ function Navbar() {
     const navigate = useNavigate();
     const [token, setToken] = useState(localStorage.getItem('token'));
     const [users, setUsers] = useState([]);
-    const [trigger, setTrigger] = useState(true);
 
     const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
 
@@ -32,7 +31,7 @@ function Navbar() {
     }, [])
 
     useEffect(() => {
-        console.log('useEffct run');
+        console.log('useEffect run');
         if (localStorage.getItem('token')) {
             fetch('https://workconnect-production.up.railway.app/api/all-users/', {
                 headers: { Authorization: `Token ${localStorage.getItem('token')}`}
@@ -42,10 +41,8 @@ function Navbar() {
             })
             .then((data) => setUsers(data))
             .catch((error) => console.log(error));
-        } else {
-            setTrigger(!trigger)
         }
-    }, [trigger]);
+    }, []);
 
     const home_route = isLoggedIn ? '/home' : '/';
 
