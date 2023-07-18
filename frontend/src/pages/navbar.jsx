@@ -44,7 +44,7 @@ function Navbar() {
         }
     }, []);
 
-    const home_route = isLoggedIn ? '/home' : '/';
+    // const home_route = isLoggedIn ? '/home' : '/';
 
     const handleProfileClick = async () => {
         const response = await fetch('https://workconnect-production.up.railway.app/api/check_user/', {
@@ -60,20 +60,20 @@ function Navbar() {
 
     return (
         <React.Fragment>
-            <nav className="navbar navbar-expand-lg px-5 bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+            <nav className="navbar navbar-expand-lg px-2 px-md-4 px-lg-5 bg-body-light border-bottom border-bottom-dark fixed" data-bs-theme="dark">
                     <div className="container-fluid">
-                    <h1 className=""><Link to='/' className='navbar-brand me-auto fs-2'>WorkConnect</Link></h1>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
+                    <h1 className=""><Link to='/' className='navbar-brand me-auto fs-2 text-dark fw-bolder'>WorkConnect</Link></h1>
+                    <button className="navbar-toggler text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon text-dark"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mb-2 mb-lg-0 ms-auto">
                             {
                             isLoggedIn?
                             <React.Fragment>
-                            <li className="nav-item" onClick={() => navigate('/jobs')}><Link className="nav-link active">Apply for Jobs</Link></li>
+                            <li className="nav-item" onClick={() => navigate('/jobs')}><Link className="nav-link text-dark active">Apply for Jobs</Link></li>
                             <div className='dropdown'>
-                                <li className='nav-item'><Link className='nav-link'>Friends</Link></li>
+                                <li className='nav-item'><Link className='nav-link text-dark'>Friends</Link></li>
                                 <div className='dropdown-content'>
                                     {users && users.map((user) => {
                                         return (<div style={{margin: '5px', display: 'flex', alignItems: 'center'}} key={user.id}>
@@ -84,15 +84,15 @@ function Navbar() {
 
                                 </div>
                             </div>
-                            <li className="nav-item" onClick={() => navigate('/home')}><Link className="nav-link">Home</Link></li>
-                            <li className="nav-item" onClick={logout}><Link to='/' className="nav-link">Logout</Link></li>
-                            <li className="nav-item" onClick={handleProfileClick}><Link className="nav-link">Profile</Link></li>
+                            <li className="nav-item" onClick={() => navigate('/home')}><Link className="nav-link text-dark">Home</Link></li>
+                            <li className="nav-item" onClick={logout}><Link to='/' className="nav-link text-dark">Logout</Link></li>
+                            <li className="nav-item" onClick={handleProfileClick}><Link className="nav-link text-dark">Profile</Link></li>
                             </React.Fragment>
                             :
                             (
                                 <React.Fragment>
-                                    <li className="nav-item"><Link to='/login' className="nav-link">Login</Link></li>
-                                    <li className="nav-item"><Link to='/sign_up' className="nav-link">Sign up</Link></li>
+                                    <li className="nav-item"><Link to='/login' className="nav-link text-dark">Login</Link></li>
+                                    <li className="nav-item"><Link to='/sign_up' className="nav-link text-dark">Sign up</Link></li>
                                 </React.Fragment>
                             )
                             }
