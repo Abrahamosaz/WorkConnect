@@ -162,6 +162,11 @@ p.front-p {
     font-weight: 200;
 }
 
+.workconnect {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
 @media screen and (min-width: 992px) {
     .full-height {
         height: 75vh;
@@ -182,6 +187,11 @@ p.front-p {
 
     .flexx {
         align-items: center;
+    }
+
+    .footer-heading {
+        font-size: 1.2rem;   
+        font-weight: 600;
     }
   }
 
@@ -211,5 +221,10 @@ p.front-p {
     .bg-head span {
         font-weight: 600;
         font-size: 2.1rem;
+    }
+
+    .footer-heading {
+        font-size: 1rem;
+        font-weight: 600;
     }
   }
