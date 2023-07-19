@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-v#enk+ooqbv@bd-a&0rn6t*&jw^eve+2_b=i32_f)o$u=2^o@x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['workconnect-production.up.railway.app', 'localhost']
+ALLOWED_HOSTS = ['workconnect-production.up.railway.app', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -84,9 +84,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'workconnect.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-HOST='127.0.0.1'
+
 DATABASES = {
  'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -97,6 +95,7 @@ DATABASES = {
         'PORT': os.getenv('DATABASE_PORT')
     }
 }
+
 
 
 # Password validation
