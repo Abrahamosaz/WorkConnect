@@ -56,12 +56,12 @@ const Footer = () => {
                     <div className='row mt-0 mt-lg-5 px-3'>
                         <div className='col-lg'>
                         <div className=''>
-                            <span className='bi bi-facebook fs-3 me-3' style={{color: '#3b5998'}}></span>
-                            <span className='bi bi-twitter fs-3 me-3' style={{color: '#00acee'}}></span>
-                            <span className='bi bi-youtube fs-3 me-3' style={{color: '#c4302b'}}></span>
-                            <span className='bi bi-instagram fs-3' style={{color: '#fccc63'}}></span>
+                            <Link to='https://www.facebook.com' target='_blank'><span className='bi bi-facebook fs-3 me-3' style={{color: '#3b5998'}}></span></Link>
+                            <Link to='https://www.twitter.com/wisdom_theDev' target='_blank'><span className='bi bi-twitter fs-3 me-3' style={{color: '#00acee'}}></span></Link>
+                            <Link to='https://www.youtube.com' target='_blank'><span className='bi bi-youtube fs-3 me-3' style={{color: '#c4302b'}}></span></Link>
+                            <Link to='https://www.instagram.com' target='_blank'><span className='bi bi-instagram fs-3' style={{color: '#fccc63'}}></span></Link>
                         </div>
-                        <p className='mb-0'>Copyright &copy; {date} WorkConnect</p>
+                        <p className='mb-0 my-1'>Copyright &copy; {date} WorkConnect</p>
                         <small>6, Lekki phase 1, Lagos state, Nigeria.</small>
                         </div>
                     </div>

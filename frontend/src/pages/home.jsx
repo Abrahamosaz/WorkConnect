@@ -62,7 +62,7 @@ function Home() {
 
 
     return (
-            <section className="py-5 bg-padding-x">
+            <section className="py-5 bg-padding-x margin-nav">
                 <div className="text-center my-3">
                 <form className="d-flex" role="search">
                     <input 

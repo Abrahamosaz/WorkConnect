@@ -4,7 +4,7 @@ import '../../css/index.css';
 
 const Section7 = () => {
     return (
-        <div  className='row py-5 px-3 my-3 my-lg-5 px-md-4 px-lg-5 flex-rr flexx gx-5'>
+        <div  className='row py-5 px-3 my-3 my-lg-5 px-md-4 px-lg-5 flex-rr flexx'>
                     <div className='col-lg'><img src="https://images.pexels.com/photos/3153201/pexels-photo-3153201.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" /></div>
                     <div className='col-lg'>
                         <h1 className="text-secondary my-4 my-lg-0 bd-600">Why are the best developers joining WorkConnect?

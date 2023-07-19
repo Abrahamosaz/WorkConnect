@@ -25,7 +25,7 @@ const LandingPage = () => {
             <Section5 />
             <Section6 />
             <Section7 />
-            <hr className='hr' />
+            <hr className='hr mt-5 mb-0' />
             <Carousel />
             <PreFooter />
             <Footer />

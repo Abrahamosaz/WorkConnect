@@ -19,7 +19,7 @@ function SignupSuccess () {
 
     return (
         <React.Fragment>
-        <div className="py-5 bg-padding-x text-center">
+        <div className="py-5 bg-padding-x margin-nav text-center">
             <h1 className="fs-1 mb-4 text-primary">Welcome {name}</h1>
             <h4 className="fs-3">You have successfully created your WorkConnect account</h4>
             <p className="fs-4 mb-3">Don't worry; this page redirects authomatically.</p>

@@ -3,7 +3,7 @@ import '../css/index.css';
 
 const ProfileEmployerPage = () => {
   return (
-    <div className='container'>
+    <div className='container py-5 bg-padding-x margin-nav'>
         <div>ProfileEmployerPage</div>
     </div>
   )

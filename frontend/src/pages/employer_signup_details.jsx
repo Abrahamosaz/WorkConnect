@@ -67,7 +67,7 @@ function EmployerSignUpDetails() {
     };
 
   return (
-    <div className="py-5 bg-padding-x">
+    <div className="py-5 bg-padding-x margin-nav">
             <h1>Create an Account</h1>
             <h3>Set up your WorkConnect Job Seeker Account in seconds</h3>
             <h4>Fill the below details</h4>

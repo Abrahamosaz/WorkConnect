@@ -38,7 +38,7 @@ const CommentPage = () => {
 
   
   return (
-    <div className='container'>
+    <div className='container py-5 bg-padding-x margin-nav'>
         <div className='comment-post'>
             <div key={postObject.post.id}>
                 <h2>{postObject.post.title}</h2>

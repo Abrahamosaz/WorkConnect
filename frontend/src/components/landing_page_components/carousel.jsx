@@ -6,8 +6,8 @@ import '../../css/index.css';
 const Carousel = () => {
     return (
         <div className='my-5 bg-padding text-center'>
-                    <h1 className='bd-600'>People <i className='material-icons fs-3' style={{color: 'red'}}>favorite</i> <span className='text-primary'>WorkConnect</span></h1>
-                    <h3 className='bd-500 mb-3'>See what others have to say about us</h3>
+                    <h1 className='bd-600'>People <i className='bi bi-heart-fill fs-2' style={{color: 'red'}}></i> <span className='text-primary'>WorkConnect</span></h1>
+                    <h3 className='bd-500 mb-3 fs-5'>See what others have to say about us</h3>
                 
                         <div id="carouselExampleControls" className="carousel slide text-center carousel-dark" data-ride="carousel">
                         <div className="carousel-inner">
@@ -20,10 +20,12 @@ const Carousel = () => {
                                 <p>Django Developer</p>
                                 <p className="text-muted">
                                     <i className="fas fa-quote-left pe-2"></i>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus et deleniti
-                                    nesciunt sint eligendi reprehenderit reiciendis, quibusdam illo, beatae quia
-                                    fugit consequatur laudantium velit magnam error. Consectetur distinctio fugit
-                                    doloremque.
+                                    WorkConnect has transformed my career. Their rigorous vetting process ensured 
+                                    that I was matched with challenging and rewarding projects that aligned perfectly 
+                                    with my skills and aspirations. The exclusive developer success support they 
+                                    provide has been invaluable in helping me grow and excel in my role. I'm grateful 
+                                    for the income stability they offer through their high rematch rate. WorkConnect 
+                                    truly cares about the success and growth of developers.
                                 </p>
                                 </div>
                             </div>
@@ -41,11 +43,12 @@ const Carousel = () => {
                             <div className="row d-flex justify-content-center">
                                 <div className="col-lg-8">
                                 <h5 className="mb-3">Jerry Thomas</h5>
-                                <p>Web Developer</p>
+                                <p>Full Stack Developer</p>
                                 <p className="text-muted">
                                     <i className="fas fa-quote-left pe-2"></i>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus et deleniti
-                                    nesciunt sint eligendi reprehenderit reiciendis.
+                                    WorkConnect's commitment to my success and their exclusive developer support 
+                                    program have provided me with the resources and guidance to thrive in my career. 
+                                    I highly recommend WorkConnect to any developer seeking meaningful and fulfilling work.
                                 </p>
                                 </div>
                             </div>
@@ -63,13 +66,11 @@ const Carousel = () => {
                             <div className="row d-flex justify-content-center">
                                 <div className="col-lg-8">
                                 <h5 className="mb-3">Anna Deynah</h5>
-                                <p>UX Designer</p>
+                                <p>CEO CodeX</p>
                                 <p className="text-muted">
                                     <i className="fas fa-quote-left pe-2"></i>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus et deleniti
-                                    nesciunt sint eligendi reprehenderit reiciendis, quibusdam illo, beatae quia
-                                    fugit consequatur laudantium velit magnam error. Consectetur distinctio fugit
-                                    doloremque.
+                                    WorkConnect has been a game-changer for our startup. Their platform allowed us to access a 
+                                    diverse pool of talented developers with specialized skills that perfectly matched our needs.
                                 </p>
                                 </div>
                             </div>

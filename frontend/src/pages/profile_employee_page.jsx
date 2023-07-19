@@ -23,7 +23,7 @@ const ProfileEmployeePage = () => {
   }, [])
 
   return (
-    <div className='container'>
+    <div className='container py-5 bg-padding-x margin-nav'>
         <Profile props={userInfo} />
     </div>
   )

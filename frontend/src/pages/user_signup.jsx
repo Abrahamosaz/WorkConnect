@@ -14,12 +14,6 @@ function UserSignup() {
         firstname: '',
         lastname: ''
     });
-    // const [username, setUsername] = useState("");
-    // const [firstname, setFirstname] = useState("");
-    // const [lastname, setLastname] = useState("");
-    // const [email, setEmail] = useState("");
-    // const [password, setPassword] = useState("");
-    // const [confirmpassword, setCofirmpassword] = useState("");
     const [isError, setIsError] = useState(false);
     const [error, setError] = useState("");
 
@@ -74,7 +68,7 @@ function UserSignup() {
 
     return (
         <React.Fragment>
-        <div className="py-5 bg-padding-x">
+        <div className="py-5 bg-padding-x margin-nav">
             <h1>Create an Account</h1>
             <h3>Set up your WorkConnect App in seconds</h3>
             <small>We only need a few details</small>

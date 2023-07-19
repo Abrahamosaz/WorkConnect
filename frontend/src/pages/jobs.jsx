@@ -36,7 +36,7 @@ const Jobs = () => {
   }, []);
 
   return (
-    <div className='container'>
+    <div className='container py-5 bg-padding-x margin-nav'>
         {checkUser === 'employer' && <button style={{
           padding: '10px', textAlign: 'center', borderRadius: '8px'
         }} onClick={() => navigate('/create-jobs')}>Create Job</button>}

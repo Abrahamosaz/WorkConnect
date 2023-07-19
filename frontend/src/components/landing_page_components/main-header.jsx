@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const MainHeader = () => {
     return (
-        <div className='row my-5 px-3 px-md-4 px-lg-5 flex-r'>
+        <div className='row my-5 px-3 px-md-4 px-lg-5 flex-r full-height'>
                 <div className='col-lg'>
                     <h1 className="display-4 fw-bold text-dark mb-4 mt-3 mt-lg-0">Revolutionize Your Hiring Experience</h1>
                     <p className="lead mb-4"> Discover a pool of skilled experts primed to take your company
@@ -20,7 +20,7 @@ const MainHeader = () => {
                     </div>
                     <p className="mt-2">Looking for jobs instead? <Link to=''>Apply for jobs</Link></p>
                 </div>
-                <div className='col-lg'><img src="https://images.pexels.com/photos/3862372/pexels-photo-3862372.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" /></div>
+                <div className='col-lg mt-5 mt-md-0'><img src="https://images.pexels.com/photos/3862372/pexels-photo-3862372.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" /></div>
                 {/* <p className="mt-2">Looking for jobs instead? <Link to=''>Apply for jobs</Link></p> */}
         </div>
     )

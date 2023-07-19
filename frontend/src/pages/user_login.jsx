@@ -50,7 +50,7 @@ const UserLogin = () => {
     }
     return (
         <React.Fragment>
-        <div className="py-5 bg-padding-x">
+        <div className="py-5 bg-padding-x margin-nav">
             <h1>Welcome back</h1>
             <h3>Login to your WorkConnect Account</h3>
             <br />

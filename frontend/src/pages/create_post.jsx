@@ -30,7 +30,7 @@ const CreatePost = () => {
   };
 
   return (
-    <div className='container'>
+    <div className='container py-5 bg-padding-x margin-nav'>
         <div className='post-form'>
             <form onSubmit={handleSubmit}>
                 <label>Title:</label>
