@@ -325,10 +325,3 @@ def handle_post_likes(request):
         
     else:
         return Response({'message': 'provide the post_id as query string'}, status=status.HTTP_400_BAD_REQUEST)
-
-
-
-
-
-
-    
