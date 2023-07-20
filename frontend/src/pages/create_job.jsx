@@ -38,30 +38,48 @@ const CreateJobs = () => {
 
 
   return (
-    <div className='container py-5 bg-padding-x margin-nav'>
-      <div className='jobs-form'>
+    <div className='py-5 bg-padding-x margin-nav fs-5'>
+      <h1 className="text-center fw-bold">Job Page</h1>
+      <p className="text-center lead">Fill in the your job details</p>
+      <div className='border p-3'>
         <form onSubmit={handleSubmit}>
-          <label>Positon:</label>
-          <input type='text' name='position' value={jobFormInfo.position}
+          <div className="row mb-3">
+          <label>Positon:
+          <div className="col-sm-10">
+          <input className='form-control' type='text' name='position' value={jobFormInfo.position}
           onChange={handleChange}/>
-          <br></br>
-
-          <label>Job Description:</label>
-          <textarea row='20' col='60' name='job_description' value={jobFormInfo.job_description}
+          </div>
+          </label>
+          </div>
+          
+          <div className="row mb-3">
+          <label>Job Description:
+          <div className="col-sm-10">
+          <textarea className='form-control' row='20' col='60' name='job_description' value={jobFormInfo.job_description}
           onChange={handleChange}></textarea>
-          <br></br>
+          </div>
+          </label>
+          </div>
 
-          <label>Location:</label>
-          <input  type='text' name='location' value={jobFormInfo.location}
+          <div className="row mb-3">
+          <label>Location:
+          <div className="col-sm-10">
+          <input className='form-control'  type='text' name='location' value={jobFormInfo.location}
           onChange={handleChange}/>
-          <br></br>
+          </div>
+          </label>
+          </div>
 
-          <label>Skills Required:</label>
-          <input type='text' name='skills_required' value={jobFormInfo.skills_required}
+          <div className="row mb-3">
+          <label>Skills Required:
+          <div className="col-sm-10">
+          <input className='form-control' type='text' name='skills_required' value={jobFormInfo.skills_required}
           onChange={handleChange}/>
+          </div>
+          </label>
+          </div>
 
-          <br></br>
-          <button type='submit' >Submit</button>
+          <button type='submit' className="btn btn-outline-primary px-md-5 py-2 mt-3 btn-block" >Submit</button>
         </form>
 
       </div>

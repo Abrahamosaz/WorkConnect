@@ -38,7 +38,7 @@ const CommentPage = () => {
 
   
   return (
-    <div className='container py-5 bg-padding-x margin-nav'>
+    <div className='py-5 bg-padding-x margin-nav'>
         <div className='comment-post'>
             <div key={postObject.post.id}>
                 <h2>{postObject.post.title}</h2>
@@ -51,12 +51,13 @@ const CommentPage = () => {
                 return (<div key={id}>
                     <div className='display-comment mb-4'>
                         <p className='mb-2 fs-3'>{content}</p>
+                        <small className="fw-bold">'creator_name'</small>
                         <small>posted at: {created_at}</small>
                     </div>
                 </div>)
             })
             }
-            <div className='row mb-3'>
+            <div className='row mt-3'>
                 <div className='col-sm-10'>
                 <input type='text' 
                 className="form-control" 
@@ -65,14 +66,18 @@ const CommentPage = () => {
                 onChange={(e) => setCommentValue(e.target.value)}
                 onKeyDown={handleKey}></input>
                 </div>
-                <button type='submit' onClick={postComment} className="btn btn-dark col-sm-2 col-form-label" ref={buttonRef}>Add comment</button>
+                <button 
+                type='submit' 
+                onClick={postComment} 
+                className="btn btn-primary col-sm-2 col-form-label mx-auto mx-sm-0 mt-2 mt-sm-0" 
+                ref={buttonRef}>Add comment</button>
             </div>
         </div>
     </div>
   )
 } else {
     return (
-        <div className='py-5 text-center'>
+        <div className='py-5 margin-nav text-center'>
         <h1 className='my-2 fs-1'>No comments here</h1>
         <h2>Login to see comments</h2>
         </div>
@@ -80,4 +85,4 @@ const CommentPage = () => {
 }
 }
 
-export default CommentPage
+export default CommentPage;

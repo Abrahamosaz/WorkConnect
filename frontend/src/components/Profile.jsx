@@ -2,29 +2,28 @@ import React from 'react'
 import '../css/profile.css';
 
 const Profile = ({ props }) => {
-    const firtname = props.firstname;
-    const lastname = props.lastname;
+    // const firtname = props.firstname;
+    // const lastname = props.lastname;
   return (
-    <div className='container px-5'>
+    <div className='py-5 bg-padding-x'>
         <div>
-            <h1 className='fs-1 text-center my-5'>{firtname} Firstname, Lastname {lastname}</h1>
+            <h1 className='fs-1 text-center my-5 fw-bold'>Welcome</h1>
         </div>
         <div className='upper'>
             {props.profile_picture?
-            <p className='fs-1 text-white'> WorkConnect Profile</p>:
-            <img src={props.profile_picture} alt="" className='fs-1 text-white profile-img rounded-circle' />}
+            <p className='fs-1 text-white'>WorkConnect Profile</p>:
+            <img src={props.profile_picture} alt="user_profile_picture" className='fs-1 text-white profile-img rounded-circle' />}
         </div>
 
         <div className='my-3'>
         <div className='my-2'>
         <button className="btn btn-lg btn-light main py-5 fs-2 text-start" data-bs-toggle="collapse" data-bs-target="#about" aria-expanded="false" aria-controls="about">
-            About:
+            About Me:
         </button>
         </div>
         <div style={{}}>
         <div className="collapse" id="about">
             <div className="card card-body fs-4" style={{}}>
-            About Me
             {props.about_me}
             </div>
         </div>
@@ -39,7 +38,7 @@ const Profile = ({ props }) => {
         <div style={{}}>
         <div className="collapse" id="work">
             <div className="card card-body fs-4" style={{}}>
-            My Work Experience
+            
             {props.work_experience}
             </div>
         </div>
@@ -55,7 +54,7 @@ const Profile = ({ props }) => {
         <div style={{}}>
         <div className="collapse" id="edu">
             <div className="card card-body fs-4" style={{}}>
-            My Education
+            
             {props.education}
             </div>
         </div>
@@ -71,13 +70,7 @@ const Profile = ({ props }) => {
         <div style={{}}>
         <div className="collapse" id="skills">
             <div className="card card-body fs-4" style={{}}>
-            <ul className="list-unstyled">
-                <li>Map</li>
-                <li>Through</li>
-                <li>The</li>
-                <li>List</li>
-                <li>Or maybe, save time and display everything in one line</li>
-            </ul>
+            
             {props.skills}
             </div>
         </div>
@@ -93,8 +86,25 @@ const Profile = ({ props }) => {
         <div style={{}}>
         <div className="collapse" id="country">
             <div className="card card-body fs-4" style={{}}>
-            My Country
+            
             {props.country}
+            </div>
+        </div>
+        </div>
+        </div>
+
+
+        <div className='my-3'>
+        <div className='my-2'>
+        <button className="btn btn-lg btn-light main py-5 fs-2 text-start" data-bs-toggle="collapse" data-bs-target="#state" aria-expanded="false" aria-controls="state">
+            State:
+        </button>
+        </div>
+        <div style={{}}>
+        <div className="collapse" id="state">
+            <div className="card card-body fs-4" style={{}}>
+            
+            {props.state}
             </div>
         </div>
         </div>
@@ -109,7 +119,7 @@ const Profile = ({ props }) => {
         <div style={{}}>
         <div className="collapse" id="location">
             <div className="card card-body fs-4" style={{}}>
-            My Location
+            
             {props.location}
             </div>
         </div>

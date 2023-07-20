@@ -65,13 +65,11 @@ const Comment = ({ props }) => {
 
   return (
     <div className='comment'>
-      <div style={{display: 'block'}}>
-        <div style={{marginLeft: '20px'}}>{likeCount}</div>
-        <div className='all-comments'>
-        </div>
+      <div className="d-block">
+        <div>{likeCount}</div>
         <div className='d-flex'>
             <div className='me-3'>
-            <button className='btn btn-light px-3' onClick={handleLikes} ref={likeRef}>Like</button>
+            <button className='btn btn-outline-primary px-3' onClick={handleLikes} ref={likeRef}>Like</button>
             </div>
             <div className=''>
               <button onClick={getComment} className='btn btn-dark px-3'>Comment</button>

@@ -46,7 +46,7 @@ function EmployeeSignUpDetails() {
         });
         const json_data = await res.json();
         if  (res.status ===  201) {
-            navigate('/login')
+            navigate('/home')
         } else {
             console.log(json_data.message);
         }
@@ -72,8 +72,8 @@ function EmployeeSignUpDetails() {
   return (
     <div className="py-5 bg-padding-x margin-nav">
             <h1>Complete Account Creation</h1>
-            <h3>Set up your WorkConnect Job Seeker Account in seconds</h3>
-            <h4>Fill the below details</h4>
+            <h4 className="my-4">Set up your WorkConnect Job Seeker Account in seconds</h4>
+            <h5 className="">Fill the below details</h5>
             <br />
             <br />
             <form id='form' onSubmit={handleForm}>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Posts from '../components/posts';
 /* css import */
@@ -62,7 +62,7 @@ function Home() {
 
 
     return (
-            <section className="py-5 bg-padding-x margin-nav">
+            <section className="py-5 bg-padding-x margin-nav w-100 abs">
                 <div className="text-center my-3">
                 <form className="d-flex" role="search">
                     <input 
@@ -76,11 +76,8 @@ function Home() {
                     <button className="btn btn-outline-success" onClick={handleSearch}>Search</button>
                 </form>
                 </div>
-                <button style={{
-                    marginLeft: '20px', padding: '10px', borderRadius: '8px',
-                    height: '20px', textAlign: 'center', width: '100px', fontSize: '12px',
-                    display: 'flex', justifyContent: 'center', alignItems: 'center', fontWeight: 'bold'}} onClick={() => navigate('/create-post')}>Create Post</button>
-                {!checkpost? <Posts posts={posts} /> : <h3>no post found</h3>}
+                <button className="btn btn-outline-dark px-5 py-2 mt-1" onClick={() => navigate('/create-post')}>Create Post</button>
+                {!checkpost? <Posts posts={posts} /> : <h3>No post found</h3>}
             </section>
             )
         

@@ -169,6 +169,10 @@ p.front-p {
     overflow-x: hidden;
 }
 
+.abs {
+    position: absolute;
+}
+
 @media screen and (min-width: 768px) {
     .full-height {
         height: 100vh;
@@ -191,6 +195,12 @@ p.front-p {
         align-items: center;
     }
 
+    .flex_ {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .footer-heading {
         font-size: 1.2rem;   
         font-weight: 600;
@@ -204,6 +214,13 @@ p.front-p {
 
     .flex-rr {
         flex-direction: row-reverse;
+    }
+
+    .flex_ {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
 
     .bgg-padding-y {

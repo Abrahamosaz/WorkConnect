@@ -43,7 +43,7 @@ function EmployerSignUpDetails() {
         });
         const json_data = await res.json();
         if (res.status === 201) {
-            navigate('/login');
+            navigate('/home');
         } else {
             console.log(json_data.message);
         }

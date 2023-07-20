@@ -30,15 +30,20 @@ const CreatePost = () => {
   };
 
   return (
-    <div className='container py-5 bg-padding-x margin-nav'>
-        <div className='post-form'>
+    <div className='py-5 bg-padding-x margin-nav'>
+        <div className='post-form w-100 w-lg-75'>
             <form onSubmit={handleSubmit}>
-                <label>Title:</label>
-                <input name='title' placeholder='post title' value={postInfo.title} onChange={handleChange}></input>
-                <br></br>
-                <label>Content:</label>
-                <textarea name='content' rows='4' cols='50' placeholder='post content' value={postInfo.content} onChange={handleChange}></textarea>
-                <input type='submit' value='Create' />
+              <div className="w-100 w-lg-75 mb-5">
+                <label className='fs-2'>Title:</label><br />
+                <input className='p-3 border' name='title' placeholder='post title' value={postInfo.title} onChange={handleChange}></input>
+              </div>
+                
+              <div className="w-100 w-lg-75">
+                <label className='fs-2'>Content:</label><br />
+                <textarea className='p-3 me-5 border' name='content' rows='4' cols='50' placeholder='post content' value={postInfo.content} onChange={handleChange}></textarea>
+              </div>
+
+              <button className="btn btn-outline-primary fw-bold px-5 py-3 mt-3" type='submit'>Create</button>
             </form>
         </div>
     </div>

@@ -44,8 +44,6 @@ function Navbar() {
         }
     }, []);
 
-    // const home_route = isLoggedIn ? '/home' : '/';
-
     const handleProfileClick = async () => {
         const response = await fetch('https://workconnect-production.up.railway.app/api/check_user/', {
             headers: { Authorization: `Token ${localStorage.getItem('token')}` }
@@ -60,7 +58,7 @@ function Navbar() {
 
     return (
         <React.Fragment>
-            <nav className="navbar navbar-expand-md px-2 px-md-4 px-lg-5 bg-white border-bottom border-bottom-dark fixed-top w-100 ovx" data-bs-theme="light">
+            <nav className="navbar navbar-expand-md px-2 px-md-4 px-lg-5 bg-white border-bottom border-bottom-dark fixed-top w-100 ovx zIndex" data-bs-theme="light">
                     <div className="container-fluid">
                     <h1 className=""><Link to='/' className='navbar-brand me-auto fs-2 text-dark fw-bolder'>WorkConnect</Link></h1>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,9 +74,9 @@ function Navbar() {
                                 <li className='nav-item'><Link className='nav-link text-dark'>Friends</Link></li>
                                 <div className='dropdown-content'>
                                     {users && users.map((user) => {
-                                        return (<div style={{margin: '5px', display: 'flex', alignItems: 'center'}} key={user.id}>
-                                            <div style={{ width: '30px', height: '30px', borderRadius: '50%', border: 'solid black 2px'}}></div>
-                                            <div><p style={{fontWeight: 'bold', marginLeft: '5px', alignText: 'center'}}>{user.username}</p></div>
+                                        return (<div style={{margin: '5px', display: 'flex', alignItems: 'center'}} className="zIndex" key={user.id}>
+                                            <div style={{ width: '30px', height: '30px', borderRadius: '50%', border: 'solid black 2px'}} className="zIndex"></div>
+                                            <div><p style={{fontWeight: 'bold', marginLeft: '5px', alignText: 'center'}} className="zIndex">{user.username}</p></div>
                                         </div>)
                                     })}
 

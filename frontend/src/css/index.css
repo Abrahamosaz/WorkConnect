@@ -38,4 +38,12 @@ h1 {
 
 .dropdown:hover .dropdown-content {
     display: block;
+    z-index: 1000;
+}
+
+@media  screen and (max-width: 768px) {
+    .btn-block {
+        width: 100%;
+    }
+    
 }

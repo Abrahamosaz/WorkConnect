@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/index.css';
+import '../css/posts.css';
+import '../css/home.css';
 
 
 const Jobs = () => {
@@ -36,21 +38,19 @@ const Jobs = () => {
   }, []);
 
   return (
-    <div className='container py-5 bg-padding-x margin-nav'>
-        {checkUser === 'employer' && <button style={{
-          padding: '10px', textAlign: 'center', borderRadius: '8px'
-        }} onClick={() => navigate('/create-jobs')}>Create Job</button>}
+    <div className='py-5 bg-padding-x margin-nav'>
+        {checkUser === 'employer' && <button className="btn btn-outline-primary px-5 py-2 mb-4" onClick={() => navigate('/create-jobs')}>Create Job</button>}
         <div>
           {allJobs.map((job) => {
-            return (<div key={job.id} style={{display: 'flex'}}>
-              <div>
-                <h2>{job.position}</h2>
+            return (<div key={job.id} className="post">
+              <div className="mb-2">
+                <h2 className="mb-2 fw-bold">{job.position}</h2>
                 <h3>{job.skills_required}</h3>
                 <h3>{job.location}</h3>
                 <h3>{job.job_description}</h3>
               </div>
-              <div>{user_id == job.employer_user_id && <button>Delete</button>}</div>
-              <p></p>
+              <div>{user_id === job.employer_user_id && <button className="btn btn-block btn-outline-danger px-4 py-2">Delete</button>}</div>
+              
             </div>)
           })}
         </div>
