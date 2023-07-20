@@ -70,7 +70,7 @@ function Navbar() {
                             isLoggedIn?
                             <React.Fragment>
                             <li className="nav-item" onClick={() => navigate('/jobs')}><Link className="nav-link text-dark active">Apply for Jobs</Link></li>
-                            <div className='dropdown'>
+                            {/* <div className='dropdown'>
                                 <li className='nav-item'><Link className='nav-link text-dark'>Friends</Link></li>
                                 <div className='dropdown-content'>
                                     {users && users.map((user) => {
@@ -81,7 +81,7 @@ function Navbar() {
                                     })}
 
                                 </div>
-                            </div>
+                            </div> */}
                             <li className="nav-item" onClick={() => navigate('/home')}><Link className="nav-link">Home</Link></li>
                             <li className="nav-item" onClick={logout}><Link to='/' className="nav-link">Logout</Link></li>
                             <li className="nav-item" onClick={handleProfileClick}><Link className="nav-link">Profile</Link></li>

@@ -1,5 +1,6 @@
 import React, { useContext, useState, useRef} from 'react';
 import { UserContext } from '../contexts/user.contexts';
+import moment from 'moment';
 import '../css/index.css';
 
 const CommentPage = () => {
@@ -47,18 +48,18 @@ const CommentPage = () => {
                 <hr></hr>
             </div>
             {postObject.comments.map((comment) => {
-                const { id, content, created_at } = comment;
+                const { id, content, created_at, post } = comment;
                 return (<div key={id}>
                     <div className='display-comment mb-4'>
                         <p className='mb-2 fs-3'>{content}</p>
-                        <small className="fw-bold">'creator_name'</small>
-                        <small>posted at: {created_at}</small>
+                        <small className="fw-bold d-block">@{post.author.username}</small>
+                        <small>posted {moment(created_at).fromNow()}</small>
                     </div>
                 </div>)
             })
             }
             <div className='row mt-3'>
-                <div className='col-sm-10'>
+                <div className='col-md-10'>
                 <input type='text' 
                 className="form-control" 
                 value={commentvalue}
@@ -69,7 +70,7 @@ const CommentPage = () => {
                 <button 
                 type='submit' 
                 onClick={postComment} 
-                className="btn btn-primary col-sm-2 col-form-label mx-auto mx-sm-0 mt-2 mt-sm-0" 
+                className="btn btn-primary col-md-2 col-form-label mt-2 mt-sm-0" 
                 ref={buttonRef}>Add comment</button>
             </div>
         </div>
